@@ -9,6 +9,6 @@ logger = logging.getLogger()
 
 Base = declarative_base()
 
-engine = create_engine('sqlite:///debt.db', echo=False)
+engine = create_engine('postgresql://localhost/local_debt', echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
