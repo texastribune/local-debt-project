@@ -20,7 +20,7 @@ class CityDebt(Base):
     population = Column(Float)
     tax_debt_to_assessed_valuation = Column(Float)
     tax_debt_service_to_av = Column(Float)
-    taxt_debt_per_capita = Column(Float)
+    tax_debt_per_capita = Column(Float)
 
     data_file = '13citytrlp.xls'
     data_position = range(7, 1240)

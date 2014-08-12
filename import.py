@@ -40,7 +40,7 @@ def import_city_and_county_debt():
                 population = nullify_empty(row[10].value),
                 tax_debt_to_assessed_valuation = nullify_empty(row[11].value),
                 tax_debt_service_to_av = nullify_empty(row[12].value),
-                taxt_debt_per_capita = nullify_empty(row[13].value)
+                tax_debt_per_capita = nullify_empty(row[13].value)
                 )
             debts.append(debt)
         helpers.store_objects(debts)
