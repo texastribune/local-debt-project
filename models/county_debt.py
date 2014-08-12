@@ -1,8 +1,9 @@
 from sqlalchemy import Column, String, Float, Date, Integer
 from boot import Base
+from lib.helpers import Export
 
 
-class CountyDebt(Base):
+class CountyDebt(Base, Export):
     __tablename__ = 'county_debt'
 
     id = Column(Integer, primary_key=True)

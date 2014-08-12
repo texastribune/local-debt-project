@@ -1,8 +1,9 @@
 from sqlalchemy import Column, String, Float, Date, Integer
 from boot import Base
+from lib.helpers import Export
 
 
-class CityDebt(Base):
+class CityDebt(Base, Export):
     __tablename__ = 'city_debt'
 
     id = Column(Integer, primary_key=True)
