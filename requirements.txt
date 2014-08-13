@@ -2,5 +2,5 @@
 #	requirements.txt in the root directory of a project.
 
 psycopg2
-SQLAlchemy==0.9.4
 xlrd==0.9.3
+Django==1.6.5

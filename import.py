@@ -2,9 +2,8 @@ import os
 import datetime
 import xlrd
 
-from boot import session
-from lib import helpers
-from models import *
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "local_debt.settings")
+from debt_compare.models import CityDebt, CountyDebt, SchoolDistrictDebt
 
 
 def nullify_empty(cad):
@@ -20,9 +19,8 @@ def import_city_and_county_debt():
     for klass in debt_models:
         print "Importing %s" % klass.__name__
         xls = xlrd.open_workbook(os.path.join('data', klass.data_file))
-        sheet = xls.sheet_by_name('Tax-Supported Debt')
+        sheet = xls.sheet_by_name(klass.sheet_name)
         created_at = datetime.datetime.strptime('01052014', '%d%m%Y').date()
-        debts = []
         for index in klass.data_position:
             row = sheet.row(index)
             debt = klass(
@@ -42,8 +40,7 @@ def import_city_and_county_debt():
                 tax_debt_service_to_av = nullify_empty(row[12].value),
                 tax_debt_per_capita = nullify_empty(row[13].value)
                 )
-            debts.append(debt)
-        helpers.store_objects(debts)
+            debt.save()
 
 
 def import_school_district_debt():
@@ -52,7 +49,6 @@ def import_school_district_debt():
     voted_debt_sheet = xls.sheet_by_name('13VotedDebt')
     mo_debt_sheet = xls.sheet_by_name('13M&O Debt')
     created_at = datetime.datetime.strptime('01052014', '%d%m%Y').date()
-    debts = []
 
     for index in SchoolDistrictDebt.sheets['13VotedDebt']:
         voted_row = voted_debt_sheet.row(index)
@@ -65,19 +61,19 @@ def import_school_district_debt():
             adopted_m_and_o_tax_rate_2011_voted = nullify_empty(voted_row[6].value),
             adopted_i_and_s_tax_rate_voted = nullify_empty(voted_row[7].value)
             )
-        debts.append(debt)
-    helpers.store_objects(debts)
+        debt.save()
+
 
     for index in SchoolDistrictDebt.sheets['13M&O Debt']:
         mo_row = mo_debt_sheet.row(index)
-        school_debt = session.query(SchoolDistrictDebt).filter(SchoolDistrictDebt.govt_id == mo_row[0].value).first()
-
-        if school_debt != None:
+        try:
+            school_debt = SchoolDistrictDebt.objects.get(govt_id=mo_row[0].value)
             school_debt.m_and_o_debt_service_outstanding = nullify_empty(mo_row[5].value)
             school_debt.adopted_m_and_o_tax_rate_2011 = nullify_empty(mo_row[6].value)
             school_debt.adopted_i_and_s_tax_rate = nullify_empty(mo_row[7].value)
-
-            helpers.store_object(school_debt)
+            school_debt.save()
+        except SchoolDistrictDebt.DoesNotExist:
+            next
 
 
 if __name__ == "__main__":
