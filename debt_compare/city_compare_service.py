@@ -1,17 +1,28 @@
 from debt_compare.models import CityDebt
 
 
-class CompareService(object):
+class CityCompareService(object):
     def __init__(self, city_id):
         self.city_id = city_id
         self.city = CityDebt.objects.get(id=city_id)
 
     def __call__(self):
         return {
-            'population': self.context_population(),
-            'tax_debt_per_capita': self.context_tax_debt_per_capita(),
-            'tax_debt_to_assessed_valuation': self.context_tax_debt_to_assessed_valuation()
+            'current': self.city.to_dict(),
+            'population': self.hashify(self.context_population()),
+            'tax_debt_per_capita': self.hashify(self.context_tax_debt_per_capita()),
+            'tax_debt_to_assessed_valuation': self.hashify(self.context_tax_debt_to_assessed_valuation())
         }
+
+    def hashify(self, context):
+        output = {}
+        if context['up'] != None and context['up'].id != self.city.id:
+            output['up'] = context['up'].to_dict()
+
+        if context['down'] != None and context['down'].id != self.city.id:
+            output['down'] = context['down'].to_dict()
+
+        return output
 
     def context_population(self):
         output = {}
