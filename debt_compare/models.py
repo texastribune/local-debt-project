@@ -57,14 +57,16 @@ class SchoolDistrictDebt(models.Model):
     county = models.CharField(max_length=200)
 
     # 13VotedDebt
-    voter_approved_debt_service_outstanding = models.FloatField(null=True)
-    adopted_m_and_o_tax_rate_2011_voted     = models.FloatField(null=True)
-    adopted_i_and_s_tax_rate_voted          = models.FloatField(null=True)
+    voter_approved_debt_principal_outstanding = models.FloatField(null=True)
+    voter_approved_debt_interest_outstanding  = models.FloatField(null=True)
+    voter_approved_debt_service_outstanding   = models.FloatField(null=True)
+    voter_approved_full_year_ada_2012         = models.FloatField(null=True)
 
     # 13M&O Debt
-    m_and_o_debt_service_outstanding = models.FloatField(null=True)
-    adopted_m_and_o_tax_rate_2011    = models.FloatField(null=True)
-    adopted_i_and_s_tax_rate         = models.FloatField(null=True)
+    m_and_o_debt_principal_outstanding = models.FloatField(null=True)
+    m_and_o_debt_interest_outstanding  = models.FloatField(null=True)
+    m_and_o_debt_service_outstanding   = models.FloatField(null=True)
+    m_and_o_full_year_ada_2012         = models.FloatField(null=True)
 
     sheets= {
         '13VotedDebt': range(7, 1027),

@@ -57,9 +57,10 @@ def import_school_district_debt():
             govt_id = voted_row[0].value,
             issuer = voted_row[1].value,
             county = voted_row[2].value,
-            voter_approved_debt_service_outstanding = nullify_empty(voted_row[5].value),
-            adopted_m_and_o_tax_rate_2011_voted = nullify_empty(voted_row[6].value),
-            adopted_i_and_s_tax_rate_voted = nullify_empty(voted_row[7].value)
+            voter_approved_debt_principal_outstanding = nullify_empty(voted_row[3].value),
+            voter_approved_debt_interest_outstanding  = nullify_empty(voted_row[4].value),
+            voter_approved_debt_service_outstanding   = nullify_empty(voted_row[5].value),
+            voter_approved_full_year_ada_2012         = nullify_empty(voted_row[13].value)
             )
         debt.save()
 
@@ -68,9 +69,10 @@ def import_school_district_debt():
         mo_row = mo_debt_sheet.row(index)
         try:
             school_debt = SchoolDistrictDebt.objects.get(govt_id=mo_row[0].value)
-            school_debt.m_and_o_debt_service_outstanding = nullify_empty(mo_row[5].value)
-            school_debt.adopted_m_and_o_tax_rate_2011 = nullify_empty(mo_row[6].value)
-            school_debt.adopted_i_and_s_tax_rate = nullify_empty(mo_row[7].value)
+            school_debt.m_and_o_debt_principal_outstanding = nullify_empty(mo_row[3].value)
+            school_debt.m_and_o_debt_interest_outstanding  = nullify_empty(mo_row[4].value)
+            school_debt.m_and_o_debt_service_outstanding   = nullify_empty(mo_row[5].value)
+            school_debt.m_and_o_full_year_ada_2012         = nullify_empty(mo_row[13].value)
             school_debt.save()
         except SchoolDistrictDebt.DoesNotExist:
             next
