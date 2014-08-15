@@ -1,9 +1,8 @@
 import json
 from django.http import HttpResponse
+from debt_compare.county_compare_service import CountyCompareService
 
 
-def index(HttpResponse):
-    response_data = {}
-    response_data['result'] = 'failed'
-    response_data['message'] = 'You messed up'
-    return HttpResponse(json.dumps(response_data), content_type="application/json")
+def index(request):
+    city_id = request.GET['city_id']
+    return HttpResponse(json.dumps(CountyCompareService(city_id)()), content_type="application/json")
