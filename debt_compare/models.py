@@ -1,6 +1,13 @@
 from django.db import models
 
 
+def n_a_if_none(value):
+    if value == None:
+        return 'N/A'
+    else:
+        return value
+
+
 class CityDebt(models.Model):
     created_at = models.DateField()
 
@@ -23,6 +30,19 @@ class CityDebt(models.Model):
     data_file = '13citytrlp.xls'
     data_position = range(7, 1240)
     sheet_name = 'Tax-Supported Debt'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'Govt ID': self.govt_id,
+            'Issuer': self.issuer,
+            'County': self.county,
+            'Debt Principal': n_a_if_none(self.debt_principal_outstanding),
+            'Debt Interest': n_a_if_none(self.debt_interest_outstanding),
+            'Debt Service': n_a_if_none(self.debt_service_outstanding),
+            'Population': n_a_if_none(self.population),
+            'Tax Debt Per Capita': n_a_if_none(self.tax_debt_per_capita)
+        }
 
 
 class CountyDebt(models.Model):
@@ -47,6 +67,19 @@ class CountyDebt(models.Model):
     data_file = '13cnytrlp.xls'
     data_position = range(7, 268)
     sheet_name = 'Tax-Supported Debt'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'Govt ID': self.govt_id,
+            'Issuer': self.issuer,
+            'County': self.county,
+            'Debt Principal': n_a_if_none(self.debt_principal_outstanding),
+            'Debt Interest': n_a_if_none(self.debt_interest_outstanding),
+            'Debt Service': n_a_if_none(self.debt_service_outstanding),
+            'Population': n_a_if_none(self.population),
+            'Tax Debt Per Capita': n_a_if_none(self.tax_debt_per_capita)
+        }
 
 
 class SchoolDistrictDebt(models.Model):
@@ -73,3 +106,19 @@ class SchoolDistrictDebt(models.Model):
         '13M&O Debt':  range(7, 1028)
         }
     data_file = '13isdvamorvlp.xls'
+
+    def to_dict(self):
+        return  {
+            'id': self.id,
+            'Govt ID': self.govt_id,
+            'Issuer': self.issuer,
+            'County': self.county,
+            'Voter-Approved Debt Principal': n_a_if_none(self.voter_approved_debt_principal_outstanding),
+            'Voter-Approved Debt Interest':  n_a_if_none(self.voter_approved_debt_interest_outstanding),
+            'Voter-Approved Debt Service':   n_a_if_none(self.voter_approved_debt_service_outstanding),
+            'Voter-Approved ADA2012':        n_a_if_none(self.voter_approved_full_year_ada_2012),
+            'M&O Debt Principal':            n_a_if_none(self.m_and_o_debt_principal_outstanding),
+            'M&O Debt Interest':             n_a_if_none(self.m_and_o_debt_interest_outstanding),
+            'M&O Debt Service':              n_a_if_none(self.m_and_o_debt_service_outstanding),
+            'M&O ADA2012':                   n_a_if_none(self.m_and_o_full_year_ada_2012)
+        }
