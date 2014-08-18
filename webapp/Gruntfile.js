@@ -75,6 +75,17 @@ module.exports = function (grunt) {
       ]
     },
 
+    jst: {
+      compile: {
+        files: {
+          'app/scripts/templates.js': ['app/scripts/templates/**/*.html']
+        }
+      },
+      options: {
+        prettify: true
+      }
+    },
+
     nunjucks: {
       options: {
         data: grunt.file.readJSON('data.json')
@@ -108,6 +119,13 @@ module.exports = function (grunt) {
     },
 
     watch: {
+      jst: {
+        files: ['<%= config.app %>/scripts/templates/{,*/}*.html'],
+        tasks: ['jst'],
+        options: {
+          livereload: true
+        }
+      },
       bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
@@ -151,10 +169,13 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-jst');
+
   grunt.registerTask('serve', [
     'clean:server',
     'nunjucks',
     'wiredep',
+    'jst',
     'sass:server',
     'autoprefixer',
     'connect:livereload',
