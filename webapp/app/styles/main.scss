@@ -1,8 +1,22 @@
 @import 'bourbon/dist/bourbon';
 @import 'neat/app/assets/stylesheets/neat';
 
-@import 'newsapps-styles/initialize';
-@import 'newsapps-styles/theme/theme';
-
-@import 'newsapps-styles/layout/masthead';
-@import 'newsapps-styles/layout/footers/small';
+@import 'bower_components/newsapps-styles/base/normalize';
+@import 'bower_components/newsapps-styles/base/typography';
+@import 'bower_components/newsapps-styles/base/scaffold';
+@import 'bower_components/newsapps-styles/helpers/variables';
+@import 'bower_components/newsapps-styles/helpers/colors';
+@import 'bower_components/newsapps-styles/helpers/placeholders';
+@import 'bower_components/newsapps-styles/helpers/functions';
+@import 'bower_components/newsapps-styles/helpers/mixins';
+@import 'bower_components/newsapps-styles/theme/base-theme';
+@import 'bower_components/newsapps-styles/layout/headers/masthead/masthead';
+@import 'bower_components/newsapps-styles/layout/headers/banner/banner';
+@import 'bower_components/newsapps-styles/layout/headers/banner/nav-bar';
+@import 'bower_components/newsapps-styles/layout/footers/basic';
+@import 'bower_components/newsapps-styles/layout/footers/newsapps';
+@import 'bower_components/newsapps-styles/layout/components/social-media/share-buttons';
+@import 'bower_components/newsapps-styles/layout/components/social-media/sharelines';
+@import 'bower_components/newsapps-styles/layout/components/about';
+@import 'bower_components/newsapps-styles/layout/components/tables';
+@import 'bower_components/newsapps-styles/theme/prose';
