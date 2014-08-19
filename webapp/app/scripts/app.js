@@ -3,6 +3,9 @@ window.app = new Marionette.Application();
 app.Views = app.Views || {};
 app.Controllers = app.Controllers || {};
 app.Routers = app.Routers || {};
+app.Settings = {
+  'baseURL': 'http://localhost:8000'
+};
 
 app.addRegions({
   'mainRegion': '#main'
