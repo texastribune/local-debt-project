@@ -61,5 +61,5 @@ You will also need to setup the **webapp**. Just run:
     npm install && bower install
     grunt serve
 
-  Add that's it! Feel free to start hackin.
+  Feel free to start hacking.
 
