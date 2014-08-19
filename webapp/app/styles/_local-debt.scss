@@ -2,11 +2,32 @@
 
 $bp: new-breakpoint(min-width 600px);
 
-.debt-box-wrap {
-  @include div-grid($bp, 12, 3, 4);
-  @include omega(3n);
+.debt-box {
+  @include media($bp) {
+    @include span-columns(4);
+    @include omega(3n);
+  }
+
+  border: 1px solid;
+  margin-bottom: 2em;
+
+  h3 {
+    font-size: 1.25em;
+  }
+
 }
 
-.debt-box {
-  border: 1px solid;
+.debt-box-title {
+  display: block;
+  margin: 0 .5em;
+
+  h3 {
+    font-size: 1.25em;
+    margin-bottom: .25em;
+  }
+
+  .pop {
+    font-style: italic;
+  }
 }
+
