@@ -1,10 +1,14 @@
 /* Results Page */
 
 $bp: new-breakpoint(min-width 600px);
+$bp-table: new-breakpoint(max-width 480px);
 
-$county: #f0f;
-$city: #ff0;
-$isd: #0ff;
+$county: #FF6249;
+$city: #FFA849;
+$isd: #4AA1CC;
+$county-bk: transparentize($county, .75);
+$city-bk: transparentize($city, .75);
+$isd-bk: transparentize($isd, .75);
 
 .debt-box {
   @include media($bp) {
@@ -13,23 +17,66 @@ $isd: #0ff;
   }
 
   border: 1px solid;
+  border-top: 10px solid;
   margin-bottom: 2em;
 
   h3 {
     font-size: 1.25em;
   }
 
-  &.county {
-    border-color: $county;
+  table {
+    background: $white;
+    // font-family: $base-sans-serif;
+    // font-size: 1em;
+    // margin-bottom: 2em;
+    // width: 100%;
+
+    // @include media($bp-table) {
+    //   border-top: 1px solid $line-gray;
+    //   display: block;
+    //   font-size: .875em;
+    // }
   }
 
-  &.city {
-    border-color: $city;
+  // thead {
+  //   @include media($bp-table) {
+  //     display: block;
+  //   }
+  // }
+
+  // tbody {
+  //   @include media($bp-table) {
+  //     display: block;
+  //   }
+  // }
+
+  th {
+    border-bottom: 1px solid $line-gray;
+    padding: .5em;
+
+    @include media($bp-table) {
+      border-bottom: 0;
+      display: inline;
+      font-size: 1.25em;
+    }
   }
 
-  &.isd {
-    border-color: $isd;
+  td {
+    padding: .5em;
+
+    @include media($bp-table) {
+      padding: .25em .5em;
+    }
   }
+
+  tr {
+    @include media($bp-table) {
+      display: block;
+      margin-top: .5em;
+    }
+  }
+
+
 }
 
 .debt-box-title {
@@ -44,5 +91,32 @@ $isd: #0ff;
   .pop {
     font-style: italic;
   }
+}
+
+.debt-compare {
+  @include span-columns(12);
+  border: 1px solid;
+}
+
+.debt-compare-box {
+  @include media($bp) {
+    @include span-columns(6);
+    @include omega(2n);
+  }
+}
+
+.county {
+  border-color: $county;
+  background: $county-bk;
+}
+
+.city {
+  border-color: $city;
+  background: $city-bk;
+}
+
+.isd {
+  border-color: $isd;
+  background: $isd-bk;
 }
 
