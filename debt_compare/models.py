@@ -33,15 +33,14 @@ class CityDebt(models.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'Govt ID': self.govt_id,
-            'Issuer': self.issuer,
-            'County': self.county,
-            'Debt Principal': n_a_if_none(self.debt_principal_outstanding),
-            'Debt Interest': n_a_if_none(self.debt_interest_outstanding),
-            'Debt Service': n_a_if_none(self.debt_service_outstanding),
-            'Population': n_a_if_none(self.population),
-            'Tax Debt Per Capita': n_a_if_none(self.tax_debt_per_capita)
+            'issuer': self.issuer,
+            'county': self.county,
+            'debtPrincipal': n_a_if_none(self.debt_principal_outstanding),
+            'debtInterest': n_a_if_none(self.debt_interest_outstanding),
+            'debtService': n_a_if_none(self.debt_service_outstanding),
+            'opulation': n_a_if_none(self.population),
+            'taxDebtPerCapita': n_a_if_none(self.tax_debt_per_capita),
+            'issuerType': 'city'
         }
 
 
@@ -70,15 +69,13 @@ class CountyDebt(models.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'Govt ID': self.govt_id,
-            'Issuer': self.issuer,
-            'County': self.county,
-            'Debt Principal': n_a_if_none(self.debt_principal_outstanding),
-            'Debt Interest': n_a_if_none(self.debt_interest_outstanding),
-            'Debt Service': n_a_if_none(self.debt_service_outstanding),
-            'Population': n_a_if_none(self.population),
-            'Tax Debt Per Capita': n_a_if_none(self.tax_debt_per_capita)
+            'issuer': self.issuer,
+            'debtPrincipal': n_a_if_none(self.debt_principal_outstanding),
+            'debtInterest': n_a_if_none(self.debt_interest_outstanding),
+            'debtService': n_a_if_none(self.debt_service_outstanding),
+            'population': n_a_if_none(self.population),
+            'taxDebtPerCapita': n_a_if_none(self.tax_debt_per_capita),
+            'issuerType': 'county'
         }
 
 
