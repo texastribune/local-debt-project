@@ -21,7 +21,7 @@ app.addInitializer(function() {
   'use strict';
 
   this.mainRouter = new app.Routers.Main( {
-    controller: new app.Controllers.MainController()
+    controller: new app.Controllers.Main()
   });
 
   if ( Backbone.history ) {

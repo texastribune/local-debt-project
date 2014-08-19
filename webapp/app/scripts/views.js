@@ -52,3 +52,7 @@ app.Views.Search = Marionette.ItemView.extend({
     this.ui.errorMessage.hide();
   }
 });
+
+app.Views.Entity = Backbone.Marionette.ItemView.extend({
+  template: JST['app/scripts/templates/entity.html']
+});
