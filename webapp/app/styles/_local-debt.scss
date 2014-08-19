@@ -2,6 +2,10 @@
 
 $bp: new-breakpoint(min-width 600px);
 
+$county: #f0f;
+$city: #ff0;
+$isd: #0ff;
+
 .debt-box {
   @include media($bp) {
     @include span-columns(4);
@@ -15,6 +19,17 @@ $bp: new-breakpoint(min-width 600px);
     font-size: 1.25em;
   }
 
+  &.county {
+    border-color: $county;
+  }
+
+  &.city {
+    border-color: $city;
+  }
+
+  &.isd {
+    border-color: $isd;
+  }
 }
 
 .debt-box-title {
