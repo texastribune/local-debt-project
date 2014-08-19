@@ -23,3 +23,13 @@
 
 @import 'tables';
 @import 'local-debt';
+
+.error {
+  color:#FF9494;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.hide {
+  display:none;
+}
