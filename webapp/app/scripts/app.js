@@ -1,6 +1,7 @@
 window.app = new Marionette.Application();
 
 app.Views = app.Views || {};
+app.Models = app.Models || {};
 app.Controllers = app.Controllers || {};
 app.Routers = app.Routers || {};
 app.Settings = {
