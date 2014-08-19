@@ -1,0 +1,12 @@
+/* Results Page */
+
+$bp: new-breakpoint(min-width 600px);
+
+.debt-box-wrap {
+  @include div-grid($bp, 12, 3, 4);
+  @include omega(3n);
+}
+
+.debt-box {
+  border: 1px solid;
+}
