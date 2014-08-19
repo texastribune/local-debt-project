@@ -1,29 +1,8 @@
-app.Controllers.MainController = Marionette.Controller.extend({
-  index: function() {
-    'use strict';
-    this.searchController = new app.Controllers.Search();
-    this.listenTo(this.searchController, 'location:found', this.locationFound);
-    this.listenTo(this.searchController, 'location:found', this.locationNotFound);
-  },
-
-  locationFound: function(data) {
-    'use strict';
-
-    console.log(data);
-  },
-
-  locationNotFound: function(errorMsg) {
-    'use strict';
-
-    console.log(errorMsg);
-  }
-});
-
 app.Controllers.Search = Marionette.Controller.extend({
   initialize: function() {
     'use strict';
 
-    this.baseURL = app.settings.baseURL;
+    this.baseURL = app.Settings.baseURL;
     this.searchView = new app.Views.Search();
     app.mainRegion.show(this.searchView);
 
