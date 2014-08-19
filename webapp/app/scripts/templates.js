@@ -1,3 +1,0 @@
-this["JST"] = this["JST"] || {};
-
-this["JST"]["app/scripts/templates/search.html"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<form id="search-form">\n  <label for="address">Where are you?</label>\n  <input type="text" id="address">\n  <input type="submit" class="button" id="submit-search" value="Search">\n  <button id="find-me">Find me!</button>\n</form>\n';}return __p};
