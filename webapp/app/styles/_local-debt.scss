@@ -79,9 +79,15 @@ table {
 .debt-compare-box {
   @include media($bp) {
     @include span-columns(6);
-    @include omega(2n);
   }
 }
+
+.active {
+  font-weight: 700;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
 
 .county {
   border-color: $county;
@@ -97,4 +103,3 @@ table {
   border-color: $isd;
   background: $isd-bk;
 }
-
