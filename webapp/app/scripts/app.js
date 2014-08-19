@@ -1,6 +1,7 @@
 window.app = new Marionette.Application();
 
 app.Views = app.Views || {};
+app.Models = app.Models || {};
 app.Controllers = app.Controllers || {};
 app.Routers = app.Routers || {};
 app.Settings = {
@@ -21,7 +22,7 @@ app.addInitializer(function() {
   'use strict';
 
   this.mainRouter = new app.Routers.Main( {
-    controller: new app.Controllers.MainController()
+    controller: new app.Controllers.Main()
   });
 
   if ( Backbone.history ) {

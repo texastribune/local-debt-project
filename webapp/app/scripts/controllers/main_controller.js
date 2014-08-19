@@ -1,4 +1,4 @@
-app.Controllers.MainController = Marionette.Controller.extend({
+app.Controllers.Main = Marionette.Controller.extend({
   index: function() {
     'use strict';
     this.searchController = new app.Controllers.Search();

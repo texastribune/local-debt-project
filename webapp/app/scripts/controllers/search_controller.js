@@ -6,17 +6,8 @@ app.Controllers.Search = Marionette.Controller.extend({
     this.searchView = new app.Views.Search();
     app.mainRegion.show(this.searchView);
 
-    this.listenTo(this.searchView, 'call:search', this.search);
-  },
-
-  search: function(searchStr) {
-    'use strict';
-
-    if (searchStr === 'nearest') {
-      this.searchByLocation();
-    } else {
-      this.searchByString(searchStr);
-    }
+    this.listenTo(this.searchView, 'search:string', this.searchByString);
+    this.listenTo(this.searchView, 'search:location', this.searchByLocation);
   },
 
   searchByString: function(searchStr) {
