@@ -2,11 +2,13 @@
 
 ## Databases
 
-  {
-    'FY 2013 Texas City Debt Outstanding': '13CITYTRLP.xls',
-    'FY 2013 Texas County Debt Outstanding': '13CNYTRLP.xls',
-    'FY 2013 Texas Independent School District (ISD)Debt Outstanding':'13ISDvaMOrvLP.xls'
-  }
+``` python
+{
+  'FY 2013 Texas City Debt Outstanding': '13CITYTRLP.xls',
+  'FY 2013 Texas County Debt Outstanding': '13CNYTRLP.xls',
+  'FY 2013 Texas Independent School District (ISD)Debt Outstanding':'13ISDvaMOrvLP.xls'
+}
+```
 
 ## City and County databases
 
@@ -37,3 +39,27 @@ Finally, I want us to do something similar to the "How MY CITY Compares" box tha
 * http://www.brb.state.tx.us/pub/lgs/fy2013/13ISDvaMOrvLP.xls
 
 http://www.texastransparency.org/Special_Features/Debt_at_a_Glance/counties.php
+
+## Setup
+
+You are going to need PostgreSQL. If your are using OSX, we recommend [Postgres.app](http://postgresapp.com/). You will need to have a database called `local_debt`:
+
+```sql
+CREATE DATABASE local_debt;
+```
+
+Then you need to run:
+
+    pip install -r requirements.txt
+    python manage.py syncdb
+    python import.py
+
+You will also need to setup the **webapp**. Just run:
+
+    cd webapp
+    npm install -g grunt-cli bower
+    npm install && bower install
+    grunt serve
+
+  Add that's it! Feel free to start hackin.
+
