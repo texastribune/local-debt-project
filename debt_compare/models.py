@@ -38,8 +38,9 @@ class CityDebt(models.Model):
             'debtPrincipal': n_a_if_none(self.debt_principal_outstanding),
             'debtInterest': n_a_if_none(self.debt_interest_outstanding),
             'debtService': n_a_if_none(self.debt_service_outstanding),
-            'opulation': n_a_if_none(self.population),
+            'population': n_a_if_none(self.population),
             'taxDebtPerCapita': n_a_if_none(self.tax_debt_per_capita),
+            'taxDebtToAssessedValuation': n_a_if_none(self.tax_debt_to_assessed_valuation),
             'issuerType': 'city'
         }
 
@@ -75,6 +76,7 @@ class CountyDebt(models.Model):
             'debtService': n_a_if_none(self.debt_service_outstanding),
             'population': n_a_if_none(self.population),
             'taxDebtPerCapita': n_a_if_none(self.tax_debt_per_capita),
+            'taxDebtToAssessedValuation': n_a_if_none(self.tax_debt_to_assessed_valuation),
             'issuerType': 'county'
         }
 
@@ -106,16 +108,15 @@ class SchoolDistrictDebt(models.Model):
 
     def to_dict(self):
         return  {
-            'id': self.id,
-            'Govt ID': self.govt_id,
-            'Issuer': self.issuer,
-            'County': self.county,
-            'Voter-Approved Debt Principal': n_a_if_none(self.voter_approved_debt_principal_outstanding),
-            'Voter-Approved Debt Interest':  n_a_if_none(self.voter_approved_debt_interest_outstanding),
-            'Voter-Approved Debt Service':   n_a_if_none(self.voter_approved_debt_service_outstanding),
-            'Voter-Approved ADA2012':        n_a_if_none(self.voter_approved_full_year_ada_2012),
-            'M&O Debt Principal':            n_a_if_none(self.m_and_o_debt_principal_outstanding),
-            'M&O Debt Interest':             n_a_if_none(self.m_and_o_debt_interest_outstanding),
-            'M&O Debt Service':              n_a_if_none(self.m_and_o_debt_service_outstanding),
-            'M&O ADA2012':                   n_a_if_none(self.m_and_o_full_year_ada_2012)
+            'issuer': self.issuer,
+            'county': self.county,
+            'voterApprovedDebtPrincipal': n_a_if_none(self.voter_approved_debt_principal_outstanding),
+            'voterApprovedDebtInterest':  n_a_if_none(self.voter_approved_debt_interest_outstanding),
+            'voterApprovedDebtService':   n_a_if_none(self.voter_approved_debt_service_outstanding),
+            'voterApprovedADA2012':       n_a_if_none(self.voter_approved_full_year_ada_2012),
+            'mODebtPrincipal':            n_a_if_none(self.m_and_o_debt_principal_outstanding),
+            'mODebtInterest':             n_a_if_none(self.m_and_o_debt_interest_outstanding),
+            'mODebtService':              n_a_if_none(self.m_and_o_debt_service_outstanding),
+            'mOADA2012':                  n_a_if_none(self.m_and_o_full_year_ada_2012),
+            'issuerType':                 'isd'
         }
