@@ -17,9 +17,8 @@ table {
 .debt-box {
   @include media($bp) {
     @include span-columns(4);
-    @include omega(3n);
   }
-
+  @include span-columns(12);
   border: 1px solid;
   border-top: 10px solid;
   margin-bottom: 2em;
@@ -53,8 +52,6 @@ table {
       margin-top: .5em;
     }
   }
-
-
 }
 
 .debt-box-title {
@@ -72,14 +69,12 @@ table {
 }
 
 .debt-compare {
+  @include media($bp) {
+    @include span-columns(8);
+    @include omega();
+  }
   @include span-columns(12);
   border: 1px solid;
-}
-
-.debt-compare-box {
-  @include media($bp) {
-    @include span-columns(6);
-  }
 }
 
 .active {
@@ -87,7 +82,6 @@ table {
   border-top: 1px solid;
   border-bottom: 1px solid;
 }
-
 
 .county {
   border-color: $county;

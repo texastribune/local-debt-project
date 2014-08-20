@@ -55,7 +55,6 @@ app.Views.Search = Marionette.ItemView.extend({
 
 app.Views.Entity = Marionette.ItemView.extend({
   template: JST['app/scripts/templates/entity.html'],
-  className: 'debt-box',
 
   templateHelpers: function() {
     'use strict';

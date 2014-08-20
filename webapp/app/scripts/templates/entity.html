@@ -1,83 +1,176 @@
-<% if (isAIDS) { %>
-  <div class="debt-box-title">
-    <h3><%= issuer %></h3>
-    <p class="pop">County. <%= county %></p>
+<div class="debt-box <%= issuerType %>">
+  <% if (isAIDS) { %>
+    <div class="debt-box-title">
+      <h3><%= issuer %></h3>
+      <p class="pop">County. <%= county %></p>
+    </div>
+    <table class="data-box">
+      <tbody>
+        <tr>
+          <th>Voter Approved</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Debt Principal</td>
+          <td>$ <%= voterApprovedDebtPrincipal %></td>
+        </tr>
+        <tr>
+          <td>Debt Interest</td>
+          <td>$ <%= voterApprovedDebtInterest %></td>
+        </tr>
+        <tr>
+          <td>Debt Service</td>
+          <td>$ <%= voterApprovedDebtService %></td>
+        </tr>
+        <tr>
+          <td>ADA 2012</td>
+          <td>$ <%= voterApprovedADA2012 %></td>
+        </tr>
+        <tr>
+          <th>M&O</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Debt Principal</td>
+          <td>$ <%= mODebtPrincipal %></td>
+        </tr>
+        <tr>
+          <td>Debt Interest</td>
+          <td>$ <%= mODebtInterest %></td>
+        </tr>
+        <tr>
+          <td>Debt Service</td>
+          <td>$ <%= mODebtService %></td>
+        </tr>
+        <tr>
+          <td>ADA 2012</td>
+          <td>$ <%= mOADA2012 %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% } else { %>
+    <div class="debt-box-title">
+      <h3><%= issuer %></h3>
+      <% if (isACity) { %>
+        <p class="pop">Pop. <%= county %></p>
+      <% } %>
+      <p class="pop">Pop. <%= population %></p>
+    </div>
+    <table class="data-box">
+      <tbody>
+        <tr>
+          <th>Total Debt</th>
+          <th>$ <%= debtService %> </th>
+        </tr>
+        <tr>
+          <td>Principal Debt</td>
+          <td>$ <%= debtPrincipal %></td>
+        </tr>
+        <tr>
+          <td>Interest</td>
+          <td>$ <%= debtInterest %></td>
+        </tr>
+        <tr>
+          <td>Debt to AV</td>
+          <td>$ <%= taxDebtToAssessedValuation %></td>
+        </tr>
+        <tr>
+          <th>Debt per Person</th>
+          <th>$ <%= taxDebtPerCapita %>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  <% } %>
+</div>
+<div class="debt-compare <%= issuerType %>">
+  <h3>Compare</h3>
+  <div class="debt-compare-box">
+    <table>
+      <thead>
+        <tr>
+          <th>County</th>
+          <th>Population</th>
+          <th>Outstanding Debt</th>
+          <th>Debt per Person</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>County Bigger Pop 1</td>
+          <td data-title="Population"> 10,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Debt per Person"> $ - </td>
+        </tr>
+        <tr>
+          <td>County Bigger Pop 2</td>
+          <td data-title="Population"> 9,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Debt per Person"> $ - </td>
+        </tr>
+        <tr class="county active">
+          <td>County</td>
+          <td data-title="Population"> 8,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Debt per Person"> $ - </td>
+        </tr>
+        <tr>
+          <td>County Smaller Pop 2</td>
+          <td data-title="Population"> 7,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Debt per Person"> $ - </td>
+        </tr>
+        <tr>
+          <td>County Smaller Pop 2</td>
+          <td data-title="Population"> 6,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Debt per Person"> $ - </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="data-box">
-    <tbody>
-      <tr>
-        <th>Voter Approved</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Debt Principal</td>
-        <td>$ <%= voterApprovedDebtPrincipal %></td>
-      </tr>
-      <tr>
-        <td>Debt Interest</td>
-        <td>$ <%= voterApprovedDebtInterest %></td>
-      </tr>
-      <tr>
-        <td>Debt Service</td>
-        <td>$ <%= voterApprovedDebtService %></td>
-      </tr>
-      <tr>
-        <td>ADA 2012</td>
-        <td>$ <%= voterApprovedADA2012 %></td>
-      </tr>
-      <tr>
-        <th>M&O</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Debt Principal</td>
-        <td>$ <%= mODebtPrincipal %></td>
-      </tr>
-      <tr>
-        <td>Debt Interest</td>
-        <td>$ <%= mODebtInterest %></td>
-      </tr>
-      <tr>
-        <td>Debt Service</td>
-        <td>$ <%= mODebtService %></td>
-      </tr>
-      <tr>
-        <td>ADA 2012</td>
-        <td>$ <%= mOADA2012 %></td>
-      </tr>
-    </tbody>
-  </table>
-<% } else { %>
-  <div class="debt-box-title">
-    <h3><%= issuer %></h3>
-    <% if (isACity) { %>
-      <p class="pop">Pop. <%= county %></p>
-    <% } %>
-    <p class="pop">Pop. <%= population %></p>
+  <div class="debt-compare-box">
+    <table>
+      <thead>
+        <tr>
+          <th>County</th>
+          <th>Assessed Valuation (AV)</th>
+          <th>Outstanding Debt</th>
+          <th>Ratio of Debt to AV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>County AV Bigger 1</td>
+          <td data-title="Assessed Valuation (AV)"> 10,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Ratio of Debt to AV"> $ - </td>
+        </tr>
+        <tr>
+          <td>County AV Bigger 2</td>
+          <td data-title="Assessed Valuation (AV)"> 9,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Ratio of Debt to AV"> $ - </td>
+        </tr>
+        <tr class="county active">
+          <td>County</td>
+          <td data-title="Assessed Valuation (AV)"> 8,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Ratio of Debt to AV"> $ - </td>
+        </tr>
+        <tr>
+          <td>County AV Smaller</td>
+          <td data-title="Assessed Valuation (AV)"> 7,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Ratio of Debt to AV"> $ - </td>
+        </tr>
+        <tr>
+          <td>County AV Smaller</td>
+          <td data-title="Assessed Valuation (AV)"> 6,000 </td>
+          <td data-title="Outstanding Debt"> $ - </td>
+          <td data-title="Ratio of Debt to AV"> $ - </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="data-box">
-    <tbody>
-      <tr>
-        <th>Total Debt</th>
-        <th>$ <%= debtService %> </th>
-      </tr>
-      <tr>
-        <td>Principal Debt</td>
-        <td>$ <%= debtPrincipal %></td>
-      </tr>
-      <tr>
-        <td>Interest</td>
-        <td>$ <%= debtInterest %></td>
-      </tr>
-      <tr>
-        <td>Debt to AV</td>
-        <td>$ <%= taxDebtToAssessedValuation %></td>
-      </tr>
-      <tr>
-        <th>Debt per Person</th>
-        <th>$ <%= taxDebtPerCapita %>
-        </th>
-      </tr>
-    </tbody>
-  </table>
-<% } %>
+</div>
