@@ -2,27 +2,34 @@ from debt_compare.models import CityDebt
 
 
 class CityCompareService(object):
-    def __init__(self, city_id):
-        self.city_id = city_id
-        self.city = CityDebt.objects.get(id=city_id)
+    def __init__(self, city):
+        self.city = city
 
-    def __call__(self):
-        return {
-            'current': self.city.to_dict(),
-            'population': self.hashify(self.context_population()),
-            'tax_debt_per_capita': self.hashify(self.context_tax_debt_per_capita()),
-            'tax_debt_to_assessed_valuation': self.hashify(self.context_tax_debt_to_assessed_valuation())
-        }
+    def population_context(self):
+        return self.hashify(self.context_population())
+
+    def tax_debt_to_assessed_valuation(self):
+        return self.hashify(self.context_tax_debt_to_assessed_valuation())
+
+    def tax_debt_per_capita(self):
+        return self.hashify(self.context_tax_debt_per_capita())
 
     def hashify(self, context):
-        output = {}
-        if context['up'] != None and context['up'].id != self.city.id:
-            output['up'] = context['up'].to_dict()
+        output = []
 
-        if context['down'] != None and context['down'].id != self.city.id:
-            output['down'] = context['down'].to_dict()
+        if 'up' in context and context['up'].id != self.city.id:
+            output.append(context['up'].to_short_dict())
 
-        return output
+        output.append(self.city.to_short_dict())
+
+        if 'down' in context and context['down'].id != self.city.id:
+            output.append(context['down'].to_short_dict())
+
+        # If there is no context, will return an empty Array
+        if len(output) == 1:
+            return []
+        else:
+            return output
 
     def context_population(self):
         output = {}
@@ -48,7 +55,13 @@ class CityCompareService(object):
         down = CityDebt.objects.filter(tax_debt_per_capita__lt=tax_debt_per_capita).\
             order_by('-tax_debt_per_capita').first()
 
-        return { 'up': up, 'down': down }
+        if up:
+            output['up'] = up
+
+        if down:
+            output['down'] = down
+
+        return output
 
     def context_tax_debt_to_assessed_valuation(self):
         output = {}

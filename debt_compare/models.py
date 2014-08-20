@@ -44,6 +44,16 @@ class CityDebt(models.Model):
             'issuerType': 'city'
         }
 
+    def to_short_dict(self):
+        return {
+            'issuer': self.issuer,
+            'debtPrincipal': n_a_if_none(self.debt_principal_outstanding),
+            'population': n_a_if_none(self.population),
+            'taxDebtPerCapita': n_a_if_none(self.tax_debt_per_capita),
+            'taxDebtToAssessedValuation': n_a_if_none(self.tax_debt_to_assessed_valuation),
+            'issuerType': 'city'
+        }
+
 
 class CountyDebt(models.Model):
     created_at = models.DateField()
