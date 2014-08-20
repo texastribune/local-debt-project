@@ -17,10 +17,15 @@ app.Controllers.Main = Marionette.Controller.extend({
     this.entities.push(city);
     this.entities.push(ids);
 
+    this.goToButtons = new app.Views.GoToButtons({
+      collection: this.entities
+    });
+
     this.entitiesView = new app.Views.Entities({
       collection: this.entities
     });
 
+    app.goToRegion.show(this.goToButtons);
     app.cardsRegion.show(this.entitiesView);
   }
 });

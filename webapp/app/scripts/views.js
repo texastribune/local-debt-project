@@ -38,7 +38,7 @@ app.Views.Search = Marionette.ItemView.extend({
   changeAddress: function() {
     'use strict';
 
-    this.hideError();
+    this.hideErrors();
   },
 
   showEmptyError: function() {
@@ -63,6 +63,7 @@ app.Views.Search = Marionette.ItemView.extend({
 
 app.Views.Entity = Marionette.ItemView.extend({
   template: JST['app/scripts/templates/entity.html'],
+  className: 'debt-entity',
 
   templateHelpers: function() {
     'use strict';
@@ -88,4 +89,12 @@ app.Views.Entity = Marionette.ItemView.extend({
 app.Views.Entities = Marionette.CollectionView.extend({
   childView: app.Views.Entity,
   className: 'prose'
+});
+
+app.Views.GoToButton = Marionette.ItemView.extend({
+  template: JST['app/scripts/templates/go_to_button.html'],
+});
+
+app.Views.GoToButtons = Marionette.CollectionView.extend({
+  childView: app.Views.GoToButton
 });

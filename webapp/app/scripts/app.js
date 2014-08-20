@@ -12,6 +12,7 @@ app.Settings = {
 
 app.addRegions({
   'searchRegion': '#search',
+  'goToRegion' : '#go-to-buttons',
   'cardsRegion': '#cards',
   'contextRegion': '#context'
 });
