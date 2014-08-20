@@ -14,6 +14,11 @@ table {
   background: $white;
 }
 
+.debt-entity {
+  clear: left;
+  margin-top: 1em;
+}
+
 .debt-box {
   @include media($bp) {
     @include span-columns(4);
