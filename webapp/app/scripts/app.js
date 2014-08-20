@@ -9,7 +9,9 @@ app.Settings = {
 };
 
 app.addRegions({
-  'mainRegion': '#main'
+  'searchRegion': '#search',
+  'cardsRegion': '#cards',
+  'contextRegion': '#context'
 });
 
 app.Routers.Main = Backbone.Marionette.AppRouter.extend({
