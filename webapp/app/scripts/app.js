@@ -2,7 +2,10 @@ window.app = new Marionette.Application();
 
 app.Collections = app.Collections || {};
 app.Controllers = app.Controllers || {};
+app.Models = app.Models || {};
 app.Routers = app.Routers || {};
+app.Views = app.Views || {};
+
 app.Settings = {
   'baseURL': 'http://localhost:8000'
 };
