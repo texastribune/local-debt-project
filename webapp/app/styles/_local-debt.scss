@@ -1,10 +1,18 @@
 /* Results Page */
 
 $bp: new-breakpoint(min-width 600px);
+$bp-table: new-breakpoint(max-width 480px);
 
-$county: #f0f;
-$city: #ff0;
-$isd: #0ff;
+$county: #FF6249;
+$city: #FFA849;
+$isd: #4AA1CC;
+$county-bk: transparentize($county, .75);
+$city-bk: transparentize($city, .75);
+$isd-bk: transparentize($isd, .75);
+
+table {
+  background: $white;
+}
 
 .debt-box {
   @include media($bp) {
@@ -13,23 +21,40 @@ $isd: #0ff;
   }
 
   border: 1px solid;
+  border-top: 10px solid;
   margin-bottom: 2em;
 
   h3 {
     font-size: 1.25em;
   }
 
-  &.county {
-    border-color: $county;
+  th {
+    border-bottom: 1px solid $line-gray;
+    padding: .5em;
+
+    @include media($bp-table) {
+      border-bottom: 0;
+      display: inline;
+      font-size: 1.25em;
+    }
   }
 
-  &.city {
-    border-color: $city;
+  td {
+    padding: .5em;
+
+    @include media($bp-table) {
+      padding: .25em .5em;
+    }
   }
 
-  &.isd {
-    border-color: $isd;
+  tr {
+    @include media($bp-table) {
+      display: block;
+      margin-top: .5em;
+    }
   }
+
+
 }
 
 .debt-box-title {
@@ -46,3 +71,35 @@ $isd: #0ff;
   }
 }
 
+.debt-compare {
+  @include span-columns(12);
+  border: 1px solid;
+}
+
+.debt-compare-box {
+  @include media($bp) {
+    @include span-columns(6);
+  }
+}
+
+.active {
+  font-weight: 700;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+
+.county {
+  border-color: $county;
+  background: $county-bk;
+}
+
+.city {
+  border-color: $city;
+  background: $city-bk;
+}
+
+.isd {
+  border-color: $isd;
+  background: $isd-bk;
+}
