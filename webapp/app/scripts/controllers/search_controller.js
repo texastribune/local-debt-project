@@ -24,7 +24,7 @@ app.Controllers.Search = Marionette.Controller.extend({
         self.trigger('location:found', data);
       }
     }).fail(function() {
-      self.trigger('location:error', 'We could not find you.');
+      this.searchView.showNotTexasError();
     });
   },
 

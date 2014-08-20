@@ -3,7 +3,8 @@ app.Views.Search = Marionette.ItemView.extend({
 
   ui: {
     'inputAddress': 'input#address',
-    'errorMessage': '#error-message'
+    'emptyError': '#empty-error',
+    'notTexasError': 'not-texas-error'
   },
 
   events: {
@@ -18,9 +19,9 @@ app.Views.Search = Marionette.ItemView.extend({
 
     var searchString = $.trim(this.ui.inputAddress.val());
 
-    this.hideError();
+    this.hideErrors();
     if ( searchString === '' ) {
-      this.showError();
+      this.showEmptyError();
     } else {
       this.trigger('search:string', searchString);
     }
@@ -40,16 +41,23 @@ app.Views.Search = Marionette.ItemView.extend({
     this.hideError();
   },
 
-  showError: function() {
+  showEmptyError: function() {
     'use strict';
 
-    this.ui.errorMessage.show();
+    this.ui.emptyError.show();
   },
 
-  hideError: function() {
+  showNotTexasError: function() {
     'use strict';
 
-    this.ui.errorMessage.hide();
+    this.ui.notTexasError.show();
+  },
+
+  hideErrors: function() {
+    'use strict';
+
+    this.ui.emptyError.hide();
+    this.ui.notTexasError.hide();
   }
 });
 
