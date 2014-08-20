@@ -1,1 +1,1 @@
-app.Models.Entity = Backbone.Model.extend({});
+app.Models.Entity = Backbone.Model.extend();

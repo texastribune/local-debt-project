@@ -4,7 +4,7 @@ app.Controllers.Search = Marionette.Controller.extend({
 
     this.baseURL = app.Settings.baseURL;
     this.searchView = new app.Views.Search();
-    app.mainRegion.show(this.searchView);
+    app.searchRegion.show(this.searchView);
 
     this.listenTo(this.searchView, 'search:string', this.searchByString);
     this.listenTo(this.searchView, 'search:location', this.searchByLocation);
@@ -13,10 +13,18 @@ app.Controllers.Search = Marionette.Controller.extend({
   searchByString: function(searchStr) {
     'use strict';
 
-    $.get(this.searchURL(searchStr), function(data) {
-      this.trigger('location:found', data);
+    var self = this;
+
+    $.ajax({
+      url: this.searchURL(searchStr),
+      dataType: 'jsonp',
+      jsonp: 'callback',
+      jsonpCallback: 'jsonpCallback',
+      success: function(data){
+        self.trigger('location:found', data);
+      }
     }).fail(function() {
-      this.trigger('location:error', 'We could not find you.');
+      self.trigger('location:error', 'We could not find you.');
     });
   },
 
