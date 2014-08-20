@@ -3,7 +3,6 @@ app.Controllers.Main = Marionette.Controller.extend({
     'use strict';
     this.searchController = new app.Controllers.Search();
     this.listenTo(this.searchController, 'location:found', this.locationFound);
-    this.listenTo(this.searchController, 'location:found', this.locationNotFound);
   },
 
   locationFound: function(data) {
@@ -23,11 +22,5 @@ app.Controllers.Main = Marionette.Controller.extend({
     });
 
     app.cardsRegion.show(this.entitiesView);
-  },
-
-  locationNotFound: function(errorMsg) {
-    'use strict';
-
-    console.log(errorMsg);
   }
 });
