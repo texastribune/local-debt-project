@@ -67,6 +67,11 @@
             <th>$ <%= debtService %> </th>
           </tr>
           <tr>
+            <th>Debt per Person</th>
+            <th>$ <%= taxDebtPerCapita %>
+            </th>
+          </tr>
+          <tr>
             <td>Principal Debt</td>
             <td>$ <%= debtPrincipal %></td>
           </tr>
@@ -78,109 +83,109 @@
             <td>Debt to AV</td>
             <td>$ <%= taxDebtToAssessedValuation %></td>
           </tr>
-          <tr>
-            <th>Debt per Person</th>
-            <th>$ <%= taxDebtPerCapita %>
-            </th>
-          </tr>
         </tbody>
       </table>
     </div>
   <% } %>
 <!-- </div> -->
 <div class="debt-context">
-  <div class="debt-context-box  <%= issuerType %> by-pop">
-    <div class="debt-context-title">
-      <h3>Compare <%= issuer %> to locations with similar population</h3>
+  <div class="debt-context-box <%= issuerType %>">
+    <div class="debt-box-title">
+      <h3>Compare <%= issuer %></h3>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>County</th>
-          <th>Population</th>
-          <th>Outstanding Debt</th>
-          <th>Debt per Person</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>County Bigger Pop 1</td>
-          <td data-title="Population"> 10,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Debt per Person"> $ - </td>
-        </tr>
-        <tr>
-          <td>County Bigger Pop 2</td>
-          <td data-title="Population"> 9,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Debt per Person"> $ - </td>
-        </tr>
-        <tr class="<%= issuerType %> active">
-          <td>County</td>
-          <td data-title="Population"> 8,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Debt per Person"> $ - </td>
-        </tr>
-        <tr>
-          <td>County Smaller Pop 2</td>
-          <td data-title="Population"> 7,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Debt per Person"> $ - </td>
-        </tr>
-        <tr>
-          <td>County Smaller Pop 2</td>
-          <td data-title="Population"> 6,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Debt per Person"> $ - </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="debt-context-box <%= issuerType %> by-av">
-    <div class="debt-context-title">
-      <h3>Compare <%= issuer %> to locations with a similar assessed valuation</h3>
+    <div class="by-pop">
+      <div class="debt-context-title">
+        <h3>Locations with a similar population</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>County</th>
+            <th>Population</th>
+            <th>Outstanding Debt</th>
+            <th>Debt per Person</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>County Bigger Pop 1</td>
+            <td data-title="Population"> 10,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Debt per Person"> $ - </td>
+          </tr>
+          <tr>
+            <td>County Bigger Pop 2</td>
+            <td data-title="Population"> 9,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Debt per Person"> $ - </td>
+          </tr>
+          <tr class="<%= issuerType %> active">
+            <td>County</td>
+            <td data-title="Population"> 8,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Debt per Person"> $ - </td>
+          </tr>
+          <tr>
+            <td>County Smaller Pop 2</td>
+            <td data-title="Population"> 7,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Debt per Person"> $ - </td>
+          </tr>
+          <tr>
+            <td>County Smaller Pop 2</td>
+            <td data-title="Population"> 6,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Debt per Person"> $ - </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>County</th>
-          <th>Assessed Valuation (AV)</th>
-          <th>Outstanding Debt</th>
-          <th>Ratio of Debt to AV</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>County AV Bigger 1</td>
-          <td data-title="Assessed Valuation (AV)"> 10,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Ratio of Debt to AV"> $ - </td>
-        </tr>
-        <tr>
-          <td>County AV Bigger 2</td>
-          <td data-title="Assessed Valuation (AV)"> 9,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Ratio of Debt to AV"> $ - </td>
-        </tr>
-        <tr class="<%= issuerType %> active">
-          <td>County</td>
-          <td data-title="Assessed Valuation (AV)"> 8,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Ratio of Debt to AV"> $ - </td>
-        </tr>
-        <tr>
-          <td>County AV Smaller</td>
-          <td data-title="Assessed Valuation (AV)"> 7,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Ratio of Debt to AV"> $ - </td>
-        </tr>
-        <tr>
-          <td>County AV Smaller</td>
-          <td data-title="Assessed Valuation (AV)"> 6,000 </td>
-          <td data-title="Outstanding Debt"> $ - </td>
-          <td data-title="Ratio of Debt to AV"> $ - </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="by-av">
+      <div class="debt-context-title">
+        <h3>Locations with a similar property-tax base</h3>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>County</th>
+            <th>Assessed Valuation (AV)</th>
+            <th>Outstanding Debt</th>
+            <th>Ratio of Debt to AV</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>County AV Bigger 1</td>
+            <td data-title="Assessed Valuation (AV)"> 10,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Ratio of Debt to AV"> $ - </td>
+          </tr>
+          <tr>
+            <td>County AV Bigger 2</td>
+            <td data-title="Assessed Valuation (AV)"> 9,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Ratio of Debt to AV"> $ - </td>
+          </tr>
+          <tr class="<%= issuerType %> active">
+            <td>County</td>
+            <td data-title="Assessed Valuation (AV)"> 8,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Ratio of Debt to AV"> $ - </td>
+          </tr>
+          <tr>
+            <td>County AV Smaller</td>
+            <td data-title="Assessed Valuation (AV)"> 7,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Ratio of Debt to AV"> $ - </td>
+          </tr>
+          <tr>
+            <td>County AV Smaller</td>
+            <td data-title="Assessed Valuation (AV)"> 6,000 </td>
+            <td data-title="Outstanding Debt"> $ - </td>
+            <td data-title="Ratio of Debt to AV"> $ - </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

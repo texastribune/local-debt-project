@@ -10,18 +10,31 @@ $county-bk: transparentize($county, .75);
 $city-bk: transparentize($city, .75);
 $isd-bk: transparentize($isd, .75);
 
+@mixin border() {
+  border-top: 10px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  margin-bottom: 1em;
+}
+
 table {
   background: $white;
+  margin-bottom: 1em;
+
+  th {
+    padding: 1em .5em;
+  }
 }
 
 .debt-box {
+  @extend %content-block;
   @include span-columns(12);
   margin-bottom: 1em;
 
 }
 
 .debt-entity {
-  clear: left;
   margin-top: 1em;
 }
 
@@ -45,15 +58,10 @@ table {
   @include media($bp) {
     @include span-columns(4);
   }
-  border-top: 10px solid;
-  border-left: 1px solid;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  margin-bottom: 1em;
+  @include border();
 
   th {
     border-bottom: 1px solid $line-gray;
-    padding: .5em;
 
     @include media($bp-table) {
       border-bottom: 0;
@@ -79,11 +87,12 @@ table {
 }
 
 .debt-context {
+  @include span-columns(12);
   @include media($bp) {
     @include span-columns(8);
     @include omega();
   }
-  @include span-columns(12);
+
 }
 
 .debt-context-title {
@@ -93,8 +102,7 @@ table {
 }
 
 .debt-context-box {
-  border: 1px solid;
-  margin-bottom: 1em;
+  @include border();
 }
 
 .active {
@@ -102,19 +110,6 @@ table {
   border-top: 1px solid;
   border-bottom: 1px solid;
 }
-
-// @mixin test-issuer($issuer) {
-//   @if ($issuer) == '.county' {
-//     border-color: $county;
-//     background: $county-bk;
-//   } @else if ($issuer) == '.city' {
-//     border-color: $city;
-//     background: $city-bk;
-//   } @else {
-//     border-color: $isd;
-//     background: $isd-bk;
-//   }
-// }
 
 .county {
   border-color: $county;
