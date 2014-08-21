@@ -20,10 +20,11 @@ table {
 }
 
 .debt-box {
+  @include span-columns(12);
   @include media($bp) {
     @include span-columns(4);
   }
-  @include span-columns(12);
+
   border: 1px solid;
   border-top: 10px solid;
   margin-bottom: 2em;
@@ -73,13 +74,18 @@ table {
   }
 }
 
-.debt-compare {
+.debt-context {
   @include media($bp) {
     @include span-columns(8);
     @include omega();
   }
   @include span-columns(12);
   border: 1px solid;
+}
+
+.debt-context-box {
+  border-top: 10px solid;
+  // margin: 0 .5em;
 }
 
 .active {
