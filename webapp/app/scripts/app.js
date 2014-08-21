@@ -2,6 +2,7 @@ window.app = new Marionette.Application();
 
 app.Collections = app.Collections || {};
 app.Controllers = app.Controllers || {};
+app.Layouts = app.Layouts || {};
 app.Models = app.Models || {};
 app.Routers = app.Routers || {};
 app.Views = app.Views || {};
