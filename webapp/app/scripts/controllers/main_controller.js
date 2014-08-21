@@ -18,7 +18,7 @@ app.Controllers.Main = Marionette.Controller.extend({
     this.entities.push(isd);
 
     this.renderButtons();
-    this.renderCounty(city);
+    this.renderCounty(county);
     this.renderCity(city);
     this.renderISD(isd);
   },

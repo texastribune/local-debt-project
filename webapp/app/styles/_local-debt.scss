@@ -14,23 +14,37 @@ table {
   background: $white;
 }
 
+.debt-box {
+  @include span-columns(12);
+  margin-bottom: 2em;
+
+}
+
 .debt-entity {
+  border-top: 10px solid;
   clear: left;
   margin-top: 1em;
 }
 
-.debt-box {
-  @include span-columns(12);
-  @include media($bp) {
-    @include span-columns(4);
-  }
-
-  border: 1px solid;
-  border-top: 10px solid;
-  margin-bottom: 2em;
+.debt-box-title {
+  display: block;
+  padding: .5em;
 
   h3 {
     font-size: 1.25em;
+    margin-bottom: .25em;
+  }
+
+  .pop {
+    font-style: italic;
+  }
+
+}
+
+.data-box {
+  @include span-columns(12);
+  @include media($bp) {
+    @include span-columns(4);
   }
 
   th {
@@ -60,20 +74,6 @@ table {
   }
 }
 
-.debt-box-title {
-  display: block;
-  margin: 0 .5em;
-
-  h3 {
-    font-size: 1.25em;
-    margin-bottom: .25em;
-  }
-
-  .pop {
-    font-style: italic;
-  }
-}
-
 .debt-context {
   @include media($bp) {
     @include span-columns(8);
@@ -93,6 +93,19 @@ table {
   border-top: 1px solid;
   border-bottom: 1px solid;
 }
+
+// @mixin test-issuer($issuer) {
+//   @if ($issuer) == '.county' {
+//     border-color: $county;
+//     background: $county-bk;
+//   } @else if ($issuer) == '.city' {
+//     border-color: $city;
+//     background: $city-bk;
+//   } @else {
+//     border-color: $isd;
+//     background: $isd-bk;
+//   }
+// }
 
 .county {
   border-color: $county;

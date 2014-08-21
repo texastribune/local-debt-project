@@ -1,6 +1,6 @@
-<div class="debt-box <%= issuerType %>">
-  <% if (isISDS) { %>
-    <div class="debt-box-title">
+<div class="<%= issuerType %>">
+  <% if (isISD) { %>
+    <div class="debt-box-title <%= issuerType %>">
       <h3><%= issuer %></h3>
       <p class="pop">County. <%= county %></p>
     </div>
@@ -59,7 +59,7 @@
     <table class="data-box">
       <tbody>
         <tr>
-          <th>Total Debt</th>
+          <th>Outstanding Debt</th>
           <th>$ <%= debtService %> </th>
         </tr>
         <tr>
