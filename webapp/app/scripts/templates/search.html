@@ -1,8 +1,17 @@
-<form id="search-form">
-  <label for="address">Where are you?</label>
-  <input type="text" id="address">
-  <input type="submit" class="button" id="submit-search" value="Search">
-  <button id="find-me">Find me!</button>
-  <div class="hide error" id="empty-error">You need to enter you address.</div>
-  <div class="hide error" id="not-texas-error">Looks like you are not in Texas.</div>
-</form>
+ <div class="prose">
+   <form id="search-form">
+    <label for="address"><strong>Where are you?</strong></label>
+    <input type="text" id="address">
+    <input type="submit" class="button" id="submit-search" value="Search">
+    <button id="find-me">Find me!</button>
+    <div class="hide error" id="empty-error">
+      <p>Please enter an address.</p>
+    </div>
+    <div class="hide error" id="not-texas-error">
+      <p>
+        Sorry, looks like you're not in Texas. Try entering a Texas address.
+      </p>
+    </div>
+  </form>
+ </div>
+
