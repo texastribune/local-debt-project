@@ -24,13 +24,13 @@ def location(request):
     lat = request.GET['lat']
     lng =  request.GET['lng']
 
-    city, county, ids = LocationService(lat=lat, lng=lng)()
+    city, county, isd = LocationService(lat=lat, lng=lng)()
 
     output = {
         'current': {
             'city': city.to_dict(),
             'county': county.to_dict(),
-            'ids': ids.to_dict()
+            'isd': isd.to_dict()
         }
     }
 
@@ -38,14 +38,14 @@ def location(request):
 
 
 def search(request):
-    city, county, ids = SearchService(query=request.GET['q'])()
+    city, county, isd = SearchService(query=request.GET['q'])()
     city_compare_service = CityCompareService(city)
 
     output = {
         'current': {
             'city': city.to_dict(),
             'county': county.to_dict(),
-            'ids': ids.to_dict()
+            'isd': isd.to_dict()
         },
         'population': city_compare_service.population_context(),
         'debtToAssessedValuation': city_compare_service.tax_debt_to_assessed_valuation(),
@@ -53,4 +53,3 @@ def search(request):
     }
 
     return JsonpResponse(json.dumps(output), request=request)
-    # return HttpResponse(json.dumps(output), 'application/json')

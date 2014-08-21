@@ -2,6 +2,7 @@ window.app = new Marionette.Application();
 
 app.Collections = app.Collections || {};
 app.Controllers = app.Controllers || {};
+app.Layouts = app.Layouts || {};
 app.Models = app.Models || {};
 app.Routers = app.Routers || {};
 app.Views = app.Views || {};
@@ -13,8 +14,9 @@ app.Settings = {
 app.addRegions({
   'searchRegion': '#search',
   'goToRegion' : '#go-to-buttons',
-  'cardsRegion': '#cards',
-  'contextRegion': '#context'
+  'countyRegion': '#county-region',
+  'cityRegion': '#city-region',
+  'isdRegion': '#isd-region'
 });
 
 app.Routers.Main = Backbone.Marionette.AppRouter.extend({
