@@ -69,12 +69,12 @@ app.Views.Entity = Marionette.ItemView.extend({
     'use strict';
 
     var isACounty = this.model.get('issuerType') === 'county',
-        isAIDS = this.model.get('issuerType') === 'isd',
+        isISDS = this.model.get('issuerType') === 'isd',
         isACity = this.model.get('issuerType') === 'city';
 
     return {
       'isACounty': isACounty,
-      'isAIDS': isAIDS,
+      'isISDS': isISDS,
       'isACity': isACity
     };
   },
