@@ -13,8 +13,9 @@ app.Settings = {
 app.addRegions({
   'searchRegion': '#search',
   'goToRegion' : '#go-to-buttons',
-  'cardsRegion': '#cards',
-  'contextRegion': '#context'
+  'countyRegion': '#county-region',
+  'cityRegion': '#city-region',
+  'isdRegion': '#isd-region'
 });
 
 app.Routers.Main = Backbone.Marionette.AppRouter.extend({
