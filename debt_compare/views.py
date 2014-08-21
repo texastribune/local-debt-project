@@ -52,5 +52,5 @@ def search(request):
         'taxtDebtPerCapita': city_compare_service.tax_debt_per_capita()
     }
 
-    # return JsonpResponse(json.dumps(output), request=request)
-    return HttpResponse(json.dumps(output), 'application/json')
+    return JsonpResponse(json.dumps(output), request=request)
+    # return HttpResponse(json.dumps(output), 'application/json')
