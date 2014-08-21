@@ -10,17 +10,17 @@ app.Controllers.Main = Marionette.Controller.extend({
 
     var county = new app.Models.Entity(data.current.county),
         city = new app.Models.Entity(data.current.city),
-        ids = new app.Models.Entity(data.current.ids);
+        isd = new app.Models.Entity(data.current.isd);
 
     this.entities = new app.Collections.Entities();
     this.entities.push(county);
     this.entities.push(city);
-    this.entities.push(ids);
+    this.entities.push(isd);
 
     this.renderButtons();
     this.renderCounty(city);
     this.renderCity(city);
-    this.renderIDS(ids);
+    this.renderISD(isd);
   },
 
   renderCounty: function(county) {
@@ -41,12 +41,12 @@ app.Controllers.Main = Marionette.Controller.extend({
     }));
   },
 
-  renderIDS: function(ids) {
+  renderISD: function(isd) {
     'use strict';
     this.isdRegion = new app.Layouts.EntityLayout();
     app.isdRegion.show(this.isdRegion);
     this.isdRegion.debtBox.show(new app.Views.Entity({
-      model: ids
+      model: isd
     }));
   },
 
