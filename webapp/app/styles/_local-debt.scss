@@ -1,6 +1,6 @@
 /* Results Page */
 
-$bp: new-breakpoint(min-width 780px);
+$bp: new-breakpoint(min-width 866px);
 $bp-table: new-breakpoint(max-width 480px);
 
 $county: #FF6249;
@@ -16,12 +16,11 @@ table {
 
 .debt-box {
   @include span-columns(12);
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 
 }
 
 .debt-entity {
-  border-top: 10px solid;
   clear: left;
   margin-top: 1em;
 }
@@ -46,6 +45,11 @@ table {
   @include media($bp) {
     @include span-columns(4);
   }
+  border-top: 10px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  margin-bottom: 1em;
 
   th {
     border-bottom: 1px solid $line-gray;
@@ -80,12 +84,17 @@ table {
     @include omega();
   }
   @include span-columns(12);
-  border: 1px solid;
+}
+
+.debt-context-title {
+  font-size: .9em;
+  font-style: italic;
+  padding: .5em;
 }
 
 .debt-context-box {
-  border-top: 10px solid;
-  // margin: 0 .5em;
+  border: 1px solid;
+  margin-bottom: 1em;
 }
 
 .active {
@@ -121,3 +130,4 @@ table {
   border-color: $isd;
   background: $isd-bk;
 }
+
