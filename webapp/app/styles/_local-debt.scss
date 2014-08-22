@@ -1,4 +1,4 @@
-/* Results Page */
+/* LOCAL DEBT - STYLES */
 
 $bp: new-breakpoint(min-width 866px);
 $bp-table: new-breakpoint(max-width 480px);
@@ -10,27 +10,35 @@ $county-bk: transparentize($county, .75);
 $city-bk: transparentize($city, .75);
 $isd-bk: transparentize($isd, .75);
 
+
+/* OVERRIDES */
 button,
 .button {
-  max-height: 33px;
-}
-@mixin border() {
-  border-top: 10px solid;
-  border-left: 1px solid;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  margin-bottom: 1em;
+  height: 33px;
 }
 
 table {
   background: $white;
-  margin-bottom: 1em;
+  // margin-bottom: 1em;
 
   th {
     padding: 1em .5em;
   }
 }
 
+/* base.html */
+.prose {
+  @include features-layout ($bp, 12, 8);
+}
+
+
+/* Go to Buttons */
+.go-to-buttons {
+  @extend %content-block;
+  display: inline;
+}
+
+/* Entity Layout */
 .debt-box {
   @extend %content-block;
   @include span-columns(12);
@@ -62,7 +70,6 @@ table {
   @include media($bp) {
     @include span-columns(4);
   }
-  // @include border();
 
   th {
     border-bottom: 1px solid $line-gray;
@@ -99,13 +106,6 @@ table {
     @include omega();
   }
 
-  // tr {
-
-  //   &:nth-child(odd) td {
-  //     background-color: $county-bk;
-  //   }
-  // }
-
 }
 
 .debt-context-title {
@@ -115,7 +115,6 @@ table {
 }
 
 .debt-context-box {
-  // @include border();
 }
 
 .active {

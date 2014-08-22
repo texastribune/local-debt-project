@@ -7,12 +7,20 @@ app.Views.Entity = Marionette.ItemView.extend({
 
     var isACounty = this.model.get('issuerType') === 'county',
         isISD = this.model.get('issuerType') === 'isd',
-        isACity = this.model.get('issuerType') === 'city';
+        isACity = this.model.get('issuerType') === 'city',
+        formatMoney = function(x) {
+          return '$' + x.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
+        formatPercent = function(u) {
+          return u.toFixed(2).toString() + '%';
+        };
 
     return {
       'isACounty': isACounty,
       'isISD': isISD,
-      'isACity': isACity
+      'isACity': isACity,
+      'formatMoney': formatMoney,
+      'formatPercent': formatPercent
     };
   },
 
