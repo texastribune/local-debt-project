@@ -3,13 +3,17 @@
 $bp: new-breakpoint(min-width 866px);
 $bp-table: new-breakpoint(max-width 480px);
 
-$county: #FF6249;
+$county: #90D3C8;
 $city: #FFA849;
-$isd: #4AA1CC;
+$isd: #8DC967;
 $county-bk: transparentize($county, .75);
 $city-bk: transparentize($city, .75);
 $isd-bk: transparentize($isd, .75);
 
+button,
+.button {
+  max-height: 33px;
+}
 @mixin border() {
   border-top: 10px solid;
   border-left: 1px solid;
@@ -58,7 +62,7 @@ table {
   @include media($bp) {
     @include span-columns(4);
   }
-  @include border();
+  // @include border();
 
   th {
     border-bottom: 1px solid $line-gray;
@@ -83,7 +87,9 @@ table {
       display: block;
       margin-top: .5em;
     }
+
   }
+
 }
 
 .debt-context {
@@ -92,6 +98,13 @@ table {
     @include span-columns(8);
     @include omega();
   }
+
+  // tr {
+
+  //   &:nth-child(odd) td {
+  //     background-color: $county-bk;
+  //   }
+  // }
 
 }
 
@@ -102,13 +115,14 @@ table {
 }
 
 .debt-context-box {
-  @include border();
+  // @include border();
 }
 
 .active {
   font-weight: 700;
   border-top: 1px solid;
   border-bottom: 1px solid;
+  background-color: $county-bk;
 }
 
 .county {
