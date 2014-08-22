@@ -4,7 +4,7 @@ from debt_compare.location_service import LocationService
 from debt_compare.search_service import SearchService
 from debt_compare.city_context_service import CityContextService
 from debt_compare.county_context_service import CountyContextService
-from debt_compare.isd_context_service import ISDContextService
+# from debt_compare.isd_context_service import ISDContextService
 
 
 class JsonpResponse(HttpResponse):
@@ -51,13 +51,16 @@ def search(request):
             'isd': isd.to_dict()
         },
         'population': {
-            'city': city_context_service.population_context()
+            'city': city_context_service.population_context(),
+            'county': county_context_service.population_context()
         },
         'debtToAssessedValuation': {
-            'city': city_context_service.tax_debt_to_assessed_valuation()
+            'city': city_context_service.tax_debt_to_assessed_valuation(),
+            'county': county_context_service.tax_debt_to_assessed_valuation()
         },
         'taxtDebtPerCapita': {
-            'city': city_context_service.tax_debt_per_capita()
+            'city': city_context_service.tax_debt_per_capita(),
+            'county': county_context_service.tax_debt_per_capita()
         }
     }
 
