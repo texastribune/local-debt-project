@@ -1,5 +1,5 @@
 <% if (isISD) { %>
-  <div id="<% issuerType %>-jump" class="data-box">
+  <div id="<%= issuerType %>-jump" class="data-box">
     <div class="debt-box-title  <%= issuerType %>">
       <h3><%= issuer %></h3>
       <p class="pop">County <%= county %></p>
@@ -50,7 +50,7 @@
     </table>
   </div>
 <% } else { %>
-  <div id="<% issuerType %>-jump" class="data-box">
+  <div id="<%= issuerType %>-jump" class="data-box">
     <div class="debt-box-title <%= issuerType %>">
       <h3><%= issuer %></h3>
       <% if (isACity) { %>
