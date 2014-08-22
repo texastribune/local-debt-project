@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debt_compare',
+    'debt_context',
 )
 
 MIDDLEWARE_CLASSES = (
