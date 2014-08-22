@@ -1,7 +1,7 @@
 from debt_compare.models import CityDebt
 
 
-class CityCompareService(object):
+class CityContextService(object):
     def __init__(self, city):
         self.city = city
 
