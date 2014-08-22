@@ -18,17 +18,23 @@ app.Controllers.Main = Marionette.Controller.extend({
     this.entities.push(isd);
 
     this.renderButtons();
-    this.renderCounty(county);
+    this.renderCounty(county, data);
     this.renderCity(city);
     this.renderISD(isd);
   },
 
-  renderCounty: function(county) {
+  renderCounty: function(county, data) {
     'use strict';
     this.countyLayout = new app.Layouts.EntityLayout();
     app.countyRegion.show(this.countyLayout);
     this.countyLayout.debtBox.show(new app.Views.Entity({
       model: county
+    }));
+    this.countyLayout.debtByPop.show(new app.Views.PopulationContext({
+      collection: new app.Collections.Entities(data.population.county)
+    }));
+    this.countyLayout.debtByAV.show(new app.Views.PopulationContext({
+      collection: new app.Collections.Entities(data.debtToAssessedValuation.county)
     }));
   },
 
