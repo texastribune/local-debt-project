@@ -19,7 +19,7 @@ app.Controllers.Main = Marionette.Controller.extend({
 
     this.renderButtons();
     this.renderCounty(county, data);
-    this.renderCity(city);
+    this.renderCity(city, data);
     this.renderISD(isd);
   },
 
@@ -33,17 +33,23 @@ app.Controllers.Main = Marionette.Controller.extend({
     this.countyLayout.debtByPop.show(new app.Views.PopulationContext({
       collection: new app.Collections.Entities(data.population.county)
     }));
-    this.countyLayout.debtByAV.show(new app.Views.PopulationContext({
+    this.countyLayout.debtByAV.show(new app.Views.AVContext({
       collection: new app.Collections.Entities(data.debtToAssessedValuation.county)
     }));
   },
 
-  renderCity: function(city) {
+  renderCity: function(city, data) {
     'use strict';
     this.cityLayout = new app.Layouts.EntityLayout();
     app.cityRegion.show(this.cityLayout);
     this.cityLayout.debtBox.show(new app.Views.Entity({
       model: city
+    }));
+    this.cityLayout.debtByPop.show(new app.Views.PopulationContext({
+      collection: new app.Collections.Entities(data.population.city)
+    }));
+    this.cityLayout.debtByAV.show(new app.Views.AVContext({
+      collection: new app.Collections.Entities(data.debtToAssessedValuation.city)
     }));
   },
 
