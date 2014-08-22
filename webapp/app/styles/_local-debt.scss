@@ -107,16 +107,6 @@ table {
     @include span-columns(4);
   }
 
-  th {
-    border-bottom: 1px solid $line-gray;
-
-    @include media($bp-table) {
-      border-bottom: 0;
-      display: inline;
-      font-size: 1.25em;
-    }
-  }
-
   td {
     padding: .5em;
 
@@ -128,9 +118,14 @@ table {
   tr {
     @include media($bp-table) {
       display: block;
-      margin-top: .5em;
+      margin: .25em;
     }
-
+    &.important {
+      border-bottom: 1px solid $line-gray;
+      border-top: 1px solid $line-gray;
+      font-size: 1.25em;
+      font-weight: 700;
+    }
   }
 
 }

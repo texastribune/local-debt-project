@@ -1,4 +1,4 @@
 <td><%= issuer %></td>
-<td data-title="Assessed Valuation (AV)"><%= taxDebtToAssessedValuation %></td>
-<td data-title="Outstanding Debt"><%= debtPrincipal %></td>
-<td data-title="Ratio of Debt to AV"><%= taxDebtToAssessedValuation %></td>
+<td data-title="Assessed Valuation (AV)"><%= formatMoney(taxDebtToAssessedValuation) %></td>
+<td data-title="Outstanding Debt"><%= formatMoney(debtPrincipal) %></td>
+<td data-title="Ratio of Debt to AV"><%= formatMoney(taxDebtToAssessedValuation) %></td>

@@ -61,21 +61,21 @@
     <table>
       <tbody>
         <tr>
-          <th>Outstanding Debt</th>
-          <th><%= formatMoney(debtService) %> </th>
-        </tr>
-        <tr>
-          <th>Debt per Person</th>
-          <th><%= formatMoney(taxDebtPerCapita) %>
-          </th>
-        </tr>
-        <tr>
           <td>Principal Debt</td>
-          <td>$ <%= debtPrincipal %></td>
+          <td><%= formatMoney(debtPrincipal) %></td>
         </tr>
         <tr>
           <td>Interest</td>
-          <td>$ <%= debtInterest %></td>
+          <td><%= formatMoney(debtInterest) %></td>
+        </tr>
+        <tr class="important">
+          <td>Outstanding Debt</td>
+          <td><%= formatMoney(debtService) %> </td>
+        </tr>
+        <tr>
+          <td>Debt per Person</td>
+          <td><%= formatMoney(taxDebtPerCapita) %>
+          </td>
         </tr>
         <tr>
           <td>Debt to AV</td>
