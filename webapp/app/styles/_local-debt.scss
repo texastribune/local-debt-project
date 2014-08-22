@@ -10,12 +10,34 @@ $county-bk: transparentize($county, .75);
 $city-bk: transparentize($city, .75);
 $isd-bk: transparentize($isd, .75);
 
+@mixin jumpButton($issuerType) {
+  text-decoration: none;
+  &:hover {
+    background-color: $issuerType;
+  }
+
+  &:active {
+   background-color: $issuerType;
+  }
+}
 
 /* OVERRIDES */
 button,
 .button {
   height: 36px;
   margin: .25em 0;
+
+  &.county {
+    @include jumpButton($county);
+  }
+
+  &.city {
+    @include jumpButton($city);
+  }
+
+  &.isd {
+    @include jumpButton($isd);
+  }
 }
 
 table {
@@ -140,44 +162,14 @@ table {
   background: $county-bk;
 }
 
-button.county {
-  &:hover {
-    background-color: $county;
-  }
-
-  &:active {
-   background-color: $county;
-  }
-}
-
 .city {
   border-color: $city;
   background: $city-bk;
 }
 
-button.city {
-  &:hover {
-    background-color: $city;
-  }
-
-  &:active {
-    background-color: $city;
-  }
-}
-
 .isd {
   border-color: $isd;
   background: $isd-bk;
-}
-
-button.isd {
-  &:hover {
-    background-color: $isd;
-  }
-
-  &:active {
-    background-color: $isd;
-  }
 }
 
 
