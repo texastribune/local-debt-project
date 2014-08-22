@@ -38,9 +38,9 @@ class CityContextService(object):
             return output
 
         output['up'] = CityDebt.objects.filter(population__gt=population).\
-            order_by('population').first()
+            order_by('population')[:2]
         output['down'] = CityDebt.objects.filter(population__lt=population).\
-            order_by('-population').first()
+            order_by('-population')[:2]
 
         return output
 
@@ -51,9 +51,9 @@ class CityContextService(object):
             return output
 
         up = CityDebt.objects.filter(tax_debt_per_capita__gt=tax_debt_per_capita).\
-            order_by('tax_debt_per_capita').first()
+            order_by('tax_debt_per_capita')[:2]
         down = CityDebt.objects.filter(tax_debt_per_capita__lt=tax_debt_per_capita).\
-            order_by('-tax_debt_per_capita').first()
+            order_by('-tax_debt_per_capita')[:2]
 
         if up:
             output['up'] = up
@@ -69,7 +69,9 @@ class CityContextService(object):
         if tax_debt_to_assessed_valuation == None:
             return output
 
-        up = CityDebt.objects.filter(tax_debt_to_assessed_valuation__gt=tax_debt_to_assessed_valuation).order_by('tax_debt_to_assessed_valuation').first()
-        down = CityDebt.objects.filter(tax_debt_to_assessed_valuation__lt=tax_debt_to_assessed_valuation).order_by('-tax_debt_to_assessed_valuation').first()
+        up = CityDebt.objects.filter(tax_debt_to_assessed_valuation__gt=\
+            tax_debt_to_assessed_valuation).order_by('tax_debt_to_assessed_valuation')[:2]
+        down = CityDebt.objects.filter(tax_debt_to_assessed_valuation__lt=\
+            tax_debt_to_assessed_valuation).order_by('-tax_debt_to_assessed_valuation')[:2]
 
         return { 'up': up, 'down': down }
