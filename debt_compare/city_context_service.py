@@ -1,25 +1,10 @@
+from debt_compare.context_base import ContextBase
 from debt_compare.models import CityDebt
 
 
-class CityContextService(object):
+class CityContextService(ContextBase):
     def __init__(self, city):
         self.city = city
-
-    def population_context(self):
-        return self.hashify(self.context_population())
-
-    def tax_debt_to_assessed_valuation(self):
-        return self.hashify(self.context_tax_debt_to_assessed_valuation())
-
-    def tax_debt_per_capita(self):
-        return self.hashify(self.context_tax_debt_per_capita())
-
-    def hashify(self, context):
-        # If there is no context, will return an empty Array
-        if len(context) == 1:
-            return []
-        else:
-            return [entity.to_short_dict() for entity in context]
 
     def context_population(self):
         output = []
