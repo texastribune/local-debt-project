@@ -65,5 +65,4 @@ def search(request):
         }
     }
 
-    # return JsonpResponse(json.dumps(output), request=request)
-    return HttpResponse(json.dumps(output), 'application/json')
+    return JsonpResponse(json.dumps(output), request=request)
