@@ -22,7 +22,7 @@ class CityDebt(models.Model):
     i_and_s_tax_rate               = models.FloatField(null=True)
     total_tax_rate                 = models.FloatField(null=True)
     tax_year_valuation             = models.FloatField(null=True)
-    population                     = models.FloatField(null=True)
+    population                     = models.IntegerField(null=True)
     tax_debt_to_assessed_valuation = models.FloatField(null=True)
     tax_debt_service_to_av         = models.FloatField(null=True)
     tax_debt_per_capita            = models.FloatField(null=True)
@@ -69,7 +69,7 @@ class CountyDebt(models.Model):
     i_and_s_tax_rate               = models.FloatField(null=True)
     total_tax_rate                 = models.FloatField(null=True)
     tax_year_valuation             = models.FloatField(null=True)
-    population                     = models.FloatField(null=True)
+    population                     = models.IntegerField(null=True)
     tax_debt_to_assessed_valuation = models.FloatField(null=True)
     tax_debt_service_to_av         = models.FloatField(null=True)
     tax_debt_per_capita            = models.FloatField(null=True)
@@ -108,17 +108,23 @@ class SchoolDistrictDebt(models.Model):
     issuer = models.CharField(max_length=200)
     county = models.CharField(max_length=200)
 
+    # General info
+    tax_year_assessed_valuation               = models.FloatField(null=True)
+    full_year_ada_2012                        = models.IntegerField(null=True)
+
     # 13VotedDebt
     voter_approved_debt_principal_outstanding = models.FloatField(null=True)
     voter_approved_debt_interest_outstanding  = models.FloatField(null=True)
     voter_approved_debt_service_outstanding   = models.FloatField(null=True)
-    voter_approved_full_year_ada_2012         = models.FloatField(null=True)
 
     # 13M&O Debt
     m_and_o_debt_principal_outstanding = models.FloatField(null=True)
     m_and_o_debt_interest_outstanding  = models.FloatField(null=True)
     m_and_o_debt_service_outstanding   = models.FloatField(null=True)
-    m_and_o_full_year_ada_2012         = models.FloatField(null=True)
+
+    # Composed fields
+    total_debt_per_student            = models.FloatField(null=True)
+    total_debt_per_assessed_valuation = models.FloatField(null=True)
 
     sheets= {
         '13VotedDebt': range(7, 1027),
@@ -130,13 +136,19 @@ class SchoolDistrictDebt(models.Model):
         return  {
             'issuer': self.issuer,
             'county': self.county,
+            'fullYearAda2012':            n_a_if_none(self.full_year_ada_2012),
+            'taxYearAssessedValuation':   n_a_if_none(self.tax_year_assessed_valuation),
             'voterApprovedDebtPrincipal': n_a_if_none(self.voter_approved_debt_principal_outstanding),
             'voterApprovedDebtInterest':  n_a_if_none(self.voter_approved_debt_interest_outstanding),
             'voterApprovedDebtService':   n_a_if_none(self.voter_approved_debt_service_outstanding),
-            'voterApprovedADA2012':       n_a_if_none(self.voter_approved_full_year_ada_2012),
             'mODebtPrincipal':            n_a_if_none(self.m_and_o_debt_principal_outstanding),
             'mODebtInterest':             n_a_if_none(self.m_and_o_debt_interest_outstanding),
             'mODebtService':              n_a_if_none(self.m_and_o_debt_service_outstanding),
-            'mOADA2012':                  n_a_if_none(self.m_and_o_full_year_ada_2012),
             'issuerType':                 'isd'
+        }
+
+    def to_short_dict(self):
+        return {
+            'issuer': self.issuer,
+            'county': self.county
         }

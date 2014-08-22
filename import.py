@@ -12,6 +12,27 @@ def nullify_empty(cad):
     else:
         return cad
 
+def total_debt(school_debt):
+    va_debt = school_debt.voter_approved_debt_principal_outstanding
+    mo_debt = school_debt.m_and_o_debt_principal_outstanding
+
+    return (0 if va_debt == None else va_debt) + (0 if mo_debt == None else mo_debt)
+
+def debt_per_student(school_debt):
+    ada = school_debt.full_year_ada_2012
+
+    if ada == None or ada == 0:
+        return None
+    else:
+        return total_debt(school_debt) / ada
+
+def debt_per_assessed_valuation(school_debt):
+    av = school_debt.tax_year_assessed_valuation
+
+    if av == None or av == 0:
+        return None
+    else:
+        return total_debt(school_debt) / av
 
 def import_city_and_county_debt():
     debt_models = [CityDebt, CountyDebt]
@@ -60,10 +81,10 @@ def import_school_district_debt():
             voter_approved_debt_principal_outstanding = nullify_empty(voted_row[3].value),
             voter_approved_debt_interest_outstanding  = nullify_empty(voted_row[4].value),
             voter_approved_debt_service_outstanding   = nullify_empty(voted_row[5].value),
-            voter_approved_full_year_ada_2012         = nullify_empty(voted_row[13].value)
+            tax_year_assessed_valuation               = nullify_empty(voted_row[9].value),
+            full_year_ada_2012                        = nullify_empty(voted_row[13].value)
             )
         debt.save()
-
 
     for index in SchoolDistrictDebt.sheets['13M&O Debt']:
         mo_row = mo_debt_sheet.row(index)
@@ -72,10 +93,14 @@ def import_school_district_debt():
             school_debt.m_and_o_debt_principal_outstanding = nullify_empty(mo_row[3].value)
             school_debt.m_and_o_debt_interest_outstanding  = nullify_empty(mo_row[4].value)
             school_debt.m_and_o_debt_service_outstanding   = nullify_empty(mo_row[5].value)
-            school_debt.m_and_o_full_year_ada_2012         = nullify_empty(mo_row[13].value)
             school_debt.save()
         except SchoolDistrictDebt.DoesNotExist:
             next
+
+    for school_debt in SchoolDistrictDebt.objects.all():
+        school_debt.total_debt_per_student = debt_per_student(school_debt)
+        school_debt.total_debt_per_assessed_valuation = debt_per_assessed_valuation(school_debt)
+        school_debt.save()
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ from debt_context.location_service import LocationService
 from debt_context.search_service import SearchService
 from debt_context.city_context_service import CityContextService
 from debt_context.county_context_service import CountyContextService
-# from debt_compare.isd_context_service import ISDContextService
+from debt_context.isd_context_service import ISDContextService
 
 
 class JsonpResponse(HttpResponse):
@@ -43,6 +43,7 @@ def search(request):
     city, county, isd = SearchService(query=request.GET['q'])()
     city_context_service = CityContextService(city)
     county_context_service = CountyContextService(county)
+    isd_context_service = ISDContextService(isd)
 
     output = {
         'current': {
@@ -56,13 +57,12 @@ def search(request):
         },
         'debtToAssessedValuation': {
             'city': city_context_service.tax_debt_to_assessed_valuation(),
-            'county': county_context_service.tax_debt_to_assessed_valuation()
+            'county': county_context_service.tax_debt_to_assessed_valuation(),
+            'isd': isd_context_service.debt_to_assessed_valuation()
         },
-        'taxtDebtPerCapita': {
-            'city': city_context_service.tax_debt_per_capita(),
-            'county': county_context_service.tax_debt_per_capita()
+        'debtPerStudent': {
+            'isd': isd_context_service.debt_per_student()
         }
     }
 
     return JsonpResponse(json.dumps(output), request=request)
-    # return HttpResponse(json.dumps(output), 'application/json')
