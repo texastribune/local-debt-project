@@ -14,7 +14,8 @@ $isd-bk: transparentize($isd, .75);
 /* OVERRIDES */
 button,
 .button {
-  height: 33px;
+  height: 36px;
+  margin: .25em 0;
 }
 
 table {
@@ -29,17 +30,26 @@ table {
 /* base.html */
 .prose {
   @include features-layout ($bp, 12, 8);
+
+  h3.data-header {
+    display: inline;
+  }
 }
 
 
 /* Search Box */
 .search-box {
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
 }
 
 .go-to-buttons {
   @extend %content-block;
+  margin-bottom: 1em;
+}
+
+.go-to-button {
   display: inline-block;
+  margin-right: .25em;
 }
 
 /* Entity Layout */
@@ -128,8 +138,15 @@ table {
 .county {
   border-color: $county;
   background: $county-bk;
-  button & {
-    background: $county;
+}
+
+button.county {
+  &:hover {
+    background-color: $county;
+  }
+
+  &:active {
+   background-color: $county;
   }
 }
 
@@ -138,8 +155,29 @@ table {
   background: $city-bk;
 }
 
+button.city {
+  &:hover {
+    background-color: $city;
+  }
+
+  &:active {
+    background-color: $city;
+  }
+}
+
 .isd {
   border-color: $isd;
   background: $isd-bk;
 }
+
+button.isd {
+  &:hover {
+    background-color: $isd;
+  }
+
+  &:active {
+    background-color: $isd;
+  }
+}
+
 
