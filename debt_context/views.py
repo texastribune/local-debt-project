@@ -1,9 +1,9 @@
 import json
 from django.http import HttpResponse
-from debt_compare.location_service import LocationService
-from debt_compare.search_service import SearchService
-from debt_compare.city_context_service import CityContextService
-from debt_compare.county_context_service import CountyContextService
+from debt_context.location_service import LocationService
+from debt_context.search_service import SearchService
+from debt_context.city_context_service import CityContextService
+from debt_context.county_context_service import CountyContextService
 # from debt_compare.isd_context_service import ISDContextService
 
 

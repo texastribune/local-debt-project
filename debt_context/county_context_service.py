@@ -1,5 +1,5 @@
-from debt_compare.context_base import ContextBase
-from debt_compare.models import CountyDebt
+from debt_context.context_base import ContextBase
+from debt_context.models import CountyDebt
 
 
 class CountyContextService(ContextBase):

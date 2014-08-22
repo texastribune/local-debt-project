@@ -1,4 +1,4 @@
-from debt_compare.models import CityDebt, CountyDebt, SchoolDistrictDebt
+from debt_context.models import CityDebt, CountyDebt, SchoolDistrictDebt
 
 
 class LocationService(object):
