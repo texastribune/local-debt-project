@@ -9,10 +9,25 @@ app.Views.Entity = Marionette.ItemView.extend({
         isISD = this.model.get('issuerType') === 'isd',
         isACity = this.model.get('issuerType') === 'city',
         formatMoney = function(x) {
-          return '$' + x.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          if (typeof x === 'string') {
+            return 'N/A';
+          } else {
+            return '$' + x.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          }
         },
-        formatPercent = function(u) {
-          return u.toFixed(2).toString() + '%';
+        formatPercent = function(x) {
+          if (typeof x === 'string') {
+            return 'N/A';
+          } else {
+            return x.toFixed(4).toString() + '%';
+          }
+        },
+        addCommas = function(x) {
+          if (typeof x === 'string') {
+            return 'N/A';
+          } else {
+            return x.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          }
         };
 
     return {
@@ -20,7 +35,8 @@ app.Views.Entity = Marionette.ItemView.extend({
       'isISD': isISD,
       'isACity': isACity,
       'formatMoney': formatMoney,
-      'formatPercent': formatPercent
+      'formatPercent': formatPercent,
+      'addCommas': addCommas
     };
   },
 

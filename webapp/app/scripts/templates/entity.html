@@ -2,7 +2,7 @@
   <div class="data-box">
     <div class="debt-box-title  <%= issuerType %>">
       <h3><%= issuer %></h3>
-      <p class="pop">County. <%= county %></p>
+      <p class="pop">County <%= county %></p>
     </div>
     <table>
       <tbody>
@@ -16,15 +16,15 @@
         </tr>
         <tr>
           <td>Debt Interest</td>
-          <td>$ <%= voterApprovedDebtInterest %></td>
+          <td><%= formatMoney(voterApprovedDebtInterest) %></td>
         </tr>
         <tr>
           <td>Debt Service</td>
-          <td>$ <%= voterApprovedDebtService %></td>
+          <td><%= formatMoney(voterApprovedDebtService) %></td>
         </tr>
         <tr>
           <td>ADA 2012</td>
-          <td>$ <%= voterApprovedADA2012 %></td>
+          <td><%= formatMoney(voterApprovedADA2012) %></td>
         </tr>
         <tr>
           <th>M&O</th>
@@ -32,32 +32,31 @@
         </tr>
         <tr>
           <td>Debt Principal</td>
-          <td>$ <%= mODebtPrincipal %></td>
+          <td><%= formatMoney(mODebtPrincipal) %></td>
         </tr>
         <tr>
           <td>Debt Interest</td>
-          <td>$ <%= mODebtInterest %></td>
+          <td><%= formatMoney(mODebtInterest) %></td>
         </tr>
         <tr>
           <td>Debt Service</td>
-          <td>$ <%= mODebtService %></td>
+          <td><%= formatMoney(mODebtService) %></td>
         </tr>
         <tr>
           <td>ADA 2012</td>
-          <td>$ <%= mOADA2012 %></td>
+          <td><%= formatMoney(mOADA2012) %></td>
         </tr>
       </tbody>
     </table>
   </div>
 <% } else { %>
-
   <div class="data-box">
     <div class="debt-box-title <%= issuerType %>">
       <h3><%= issuer %></h3>
       <% if (isACity) { %>
       <p class="pop">Pop. <%= county %></p>
       <% } %>
-      <p class="pop">Pop. <%= population %></p>
+      <p class="pop">Pop. <%= addCommas(population) %></p>
     </div>
     <table>
       <tbody>
@@ -67,7 +66,7 @@
         </tr>
         <tr>
           <th>Debt per Person</th>
-          <th>$ <%= formatPercent(taxDebtPerCapita) %>
+          <th><%= formatMoney(taxDebtPerCapita) %>
           </th>
         </tr>
         <tr>
@@ -80,7 +79,7 @@
         </tr>
         <tr>
           <td>Debt to AV</td>
-          <td>$ <%= taxDebtToAssessedValuation %></td>
+          <td><%= formatPercent(taxDebtToAssessedValuation) %></td>
         </tr>
       </tbody>
     </table>
