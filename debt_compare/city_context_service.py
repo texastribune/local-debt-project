@@ -15,63 +15,55 @@ class CityContextService(object):
         return self.hashify(self.context_tax_debt_per_capita())
 
     def hashify(self, context):
-        output = []
-
-        if 'up' in context and context['up'].id != self.city.id:
-            output.append(context['up'].to_short_dict())
-
-        output.append(self.city.to_short_dict())
-
-        if 'down' in context and context['down'].id != self.city.id:
-            output.append(context['down'].to_short_dict())
-
         # If there is no context, will return an empty Array
-        if len(output) == 1:
+        if len(context) == 1:
             return []
         else:
-            return output
+            return [entity.to_short_dict() for entity in context]
 
     def context_population(self):
-        output = {}
+        output = []
         population = self.city.population
-        if population == None:
-            return output
 
-        output['up'] = CityDebt.objects.filter(population__gt=population).\
-            order_by('population')[:2]
-        output['down'] = CityDebt.objects.filter(population__lt=population).\
-            order_by('-population')[:2]
+        if population == None:
+            return [self.city]
+
+        output = output + list(CityDebt.objects.filter(population__gt=population).\
+            order_by('population')[:2])
+
+        output.append(self.city)
+        output = output + list(CityDebt.objects.filter(population__lt=population).\
+            order_by('-population')[:2])
 
         return output
 
     def context_tax_debt_per_capita(self):
-        output = {}
+        output = []
         tax_debt_per_capita = self.city.tax_debt_per_capita
+
         if tax_debt_per_capita == None:
-            return output
+            return [self.city]
 
-        up = CityDebt.objects.filter(tax_debt_per_capita__gt=tax_debt_per_capita).\
-            order_by('tax_debt_per_capita')[:2]
-        down = CityDebt.objects.filter(tax_debt_per_capita__lt=tax_debt_per_capita).\
-            order_by('-tax_debt_per_capita')[:2]
+        output = output + list(CityDebt.objects.filter(tax_debt_per_capita__gt=\
+            tax_debt_per_capita).order_by('tax_debt_per_capita')[:2])
 
-        if up:
-            output['up'] = up
-
-        if down:
-            output['down'] = down
+        output.append(self.city)
+        output = output + list(CityDebt.objects.filter(tax_debt_per_capita__gt=\
+            tax_debt_per_capita).order_by('-tax_debt_per_capita')[:2])
 
         return output
 
     def context_tax_debt_to_assessed_valuation(self):
-        output = {}
+        output = []
         tax_debt_to_assessed_valuation = self.city.tax_debt_to_assessed_valuation
         if tax_debt_to_assessed_valuation == None:
-            return output
+            return [self.city]
 
-        up = CityDebt.objects.filter(tax_debt_to_assessed_valuation__gt=\
-            tax_debt_to_assessed_valuation).order_by('tax_debt_to_assessed_valuation')[:2]
-        down = CityDebt.objects.filter(tax_debt_to_assessed_valuation__lt=\
-            tax_debt_to_assessed_valuation).order_by('-tax_debt_to_assessed_valuation')[:2]
+        output = output + list(CityDebt.objects.filter(tax_debt_to_assessed_valuation__gt=\
+            tax_debt_to_assessed_valuation).order_by('tax_debt_to_assessed_valuation')[:2])
 
-        return { 'up': up, 'down': down }
+        output.append(self.city)
+        output = output + list(CityDebt.objects.filter(tax_debt_to_assessed_valuation__gt=\
+            tax_debt_to_assessed_valuation).order_by('-tax_debt_to_assessed_valuation')[:2])
+
+        return output
