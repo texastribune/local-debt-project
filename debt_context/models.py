@@ -136,13 +136,19 @@ class SchoolDistrictDebt(models.Model):
         return  {
             'issuer': self.issuer,
             'county': self.county,
+            'fullYearAda2012':            n_a_if_none(self.full_year_ada_2012),
+            'taxYearAssessedValuation':   n_a_if_none(self.tax_year_assessed_valuation),
             'voterApprovedDebtPrincipal': n_a_if_none(self.voter_approved_debt_principal_outstanding),
             'voterApprovedDebtInterest':  n_a_if_none(self.voter_approved_debt_interest_outstanding),
             'voterApprovedDebtService':   n_a_if_none(self.voter_approved_debt_service_outstanding),
-            'voterApprovedADA2012':       n_a_if_none(self.voter_approved_full_year_ada_2012),
             'mODebtPrincipal':            n_a_if_none(self.m_and_o_debt_principal_outstanding),
             'mODebtInterest':             n_a_if_none(self.m_and_o_debt_interest_outstanding),
             'mODebtService':              n_a_if_none(self.m_and_o_debt_service_outstanding),
-            'mOADA2012':                  n_a_if_none(self.m_and_o_full_year_ada_2012),
             'issuerType':                 'isd'
+        }
+
+    def to_short_dict(self):
+        return {
+            'issuer': self.issuer,
+            'county': self.county
         }
