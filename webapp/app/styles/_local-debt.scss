@@ -32,10 +32,14 @@ table {
 }
 
 
-/* Go to Buttons */
+/* Search Box */
+.search-box {
+  margin-bottom: 1.25em;
+}
+
 .go-to-buttons {
   @extend %content-block;
-  display: inline;
+  display: inline-block;
 }
 
 /* Entity Layout */
@@ -114,9 +118,6 @@ table {
   padding: .5em;
 }
 
-.debt-context-box {
-}
-
 .active {
   font-weight: 700;
   border-top: 1px solid;
@@ -127,6 +128,9 @@ table {
 .county {
   border-color: $county;
   background: $county-bk;
+  button & {
+    background: $county;
+  }
 }
 
 .city {
