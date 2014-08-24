@@ -63,6 +63,9 @@ app.Controllers.Main = Marionette.Controller.extend({
     this.isdRegion.debtByPop.show(new app.Views.StudentsContext({
       collection: new app.Collections.Entities(data.debtPerStudent.isd)
     }));
+    this.isdRegion.debtByAV.show(new app.Views.ISDAVContext({
+      collection: new app.Collections.Entities(data.debtToAssessedValuation.isd)
+    }));
   },
 
   renderButtons: function() {
