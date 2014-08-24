@@ -150,5 +150,9 @@ class SchoolDistrictDebt(models.Model):
     def to_short_dict(self):
         return {
             'issuer': self.issuer,
-            'county': self.county
+            'county': self.county,
+            'totalDebtPerStudent': self.total_debt_per_student,
+            'voterApprovedDebtPrincipal': self.voter_approved_debt_principal_outstanding,
+            'mODebtPrincipal': self.m_and_o_debt_principal_outstanding,
+            'totalDebtPerAssessedValuation': self.total_debt_per_assessed_valuation
         }
