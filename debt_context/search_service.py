@@ -7,7 +7,7 @@ class SearchService(object):
 
     def __call__(self):
         return [
-            CityDebt.objects.get(id=1),
-            CountyDebt.objects.get(id=1),
+            CityDebt.objects.get(id=53),
+            CountyDebt.objects.get(id=234),
             SchoolDistrictDebt.objects.get(id=1)
         ]
