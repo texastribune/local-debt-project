@@ -5,6 +5,11 @@ import xlrd
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "local_debt.settings")
 from debt_context.models import CityDebt, CountyDebt, SchoolDistrictDebt
 
+def zero_on_empty(cad):
+    if cad == '':
+        return 0
+    else:
+        return cad
 
 def nullify_empty(cad):
     if cad == '':
@@ -90,9 +95,9 @@ def import_school_district_debt():
         mo_row = mo_debt_sheet.row(index)
         try:
             school_debt = SchoolDistrictDebt.objects.get(govt_id=mo_row[0].value)
-            school_debt.m_and_o_debt_principal_outstanding = nullify_empty(mo_row[3].value)
-            school_debt.m_and_o_debt_interest_outstanding  = nullify_empty(mo_row[4].value)
-            school_debt.m_and_o_debt_service_outstanding   = nullify_empty(mo_row[5].value)
+            school_debt.m_and_o_debt_principal_outstanding = zero_on_empty(mo_row[3].value)
+            school_debt.m_and_o_debt_interest_outstanding  = zero_on_empty(mo_row[4].value)
+            school_debt.m_and_o_debt_service_outstanding   = zero_on_empty(mo_row[5].value)
             school_debt.save()
         except SchoolDistrictDebt.DoesNotExist:
             next
