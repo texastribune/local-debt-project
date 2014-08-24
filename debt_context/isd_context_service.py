@@ -23,7 +23,7 @@ class ISDContextService(ContextBase):
             total_debt_per_student).order_by('total_debt_per_student')[:2])
 
         output.append(self.isd)
-        output = output + list(SchoolDistrictDebt.objects.filter(total_debt_per_student__gt=\
+        output = output + list(SchoolDistrictDebt.objects.filter(total_debt_per_student__lt=\
             total_debt_per_student).order_by('-total_debt_per_student')[:2])
 
         return output
