@@ -152,6 +152,7 @@ class SchoolDistrictDebt(models.Model):
             'issuer': self.issuer,
             'county': self.county,
             'totalDebtPerStudent': self.total_debt_per_student,
+            'students': self.full_year_ada_2012,
             'voterApprovedDebtPrincipal': self.voter_approved_debt_principal_outstanding,
             'mODebtPrincipal': self.m_and_o_debt_principal_outstanding,
             'totalDebtPerAssessedValuation': self.total_debt_per_assessed_valuation
