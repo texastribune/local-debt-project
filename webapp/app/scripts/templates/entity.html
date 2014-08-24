@@ -2,7 +2,8 @@
   <div id="<%= issuerType %>-jump" class="data-box">
     <div class="debt-box-title  <%= issuerType %>">
       <h3><%= issuer %></h3>
-      <p class="pop">County <%= county %></p>
+      <p class="pop">County: <%= county %></p>
+      <p class="pop">Students: <%= addCommas(fullYearAda2012) %></p>
     </div>
     <table>
       <tbody>
@@ -21,10 +22,6 @@
         <tr>
           <td>Debt Service</td>
           <td><%= formatMoney(voterApprovedDebtService) %></td>
-        </tr>
-        <tr>
-          <td>ADA 2012</td>
-          <td><%= addCommas(fullYearAda2012) %></td>
         </tr>
         <tr>
           <th>M&O</th>
