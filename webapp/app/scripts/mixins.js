@@ -16,7 +16,7 @@ app.Mixins.Helpers = {
           if (typeof x === 'string' || x === null) {
             return 'N/A';
           } else {
-            return x.toFixed(4).toString() + '%';
+            return (x * 100).toFixed(2).toString() + '%';
           }
         },
         addCommas = function(x) {
