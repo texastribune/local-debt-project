@@ -136,9 +136,9 @@ class SchoolDistrictDebt(models.Model):
     def to_dict(self):
         return  {
             'issuer': self.issuer,
-            'county': self.county,
-            'fullYearAda2012':            n_a_if_none(self.full_year_ada_2012),
+            'students':                   n_a_if_none(self.full_year_ada_2012),
             'taxYearAssessedValuation':   n_a_if_none(self.tax_year_assessed_valuation),
+            'debtPerStudent':             n_a_if_none(self.total_debt_per_student),
             'voterApprovedDebtPrincipal': n_a_if_none(self.voter_approved_debt_principal_outstanding),
             'voterApprovedDebtInterest':  n_a_if_none(self.voter_approved_debt_interest_outstanding),
             'voterApprovedDebtService':   n_a_if_none(self.voter_approved_debt_service_outstanding),
@@ -151,10 +151,8 @@ class SchoolDistrictDebt(models.Model):
     def to_short_dict(self):
         return {
             'issuer': self.issuer,
-            'county': self.county,
+            'combinedDebt': self.combined_principal_debt,
             'totalDebtPerStudent': self.total_debt_per_student,
-            'students': self.full_year_ada_2012,
-            'voterApprovedDebtPrincipal': self.voter_approved_debt_principal_outstanding,
-            'mODebtPrincipal': self.m_and_o_debt_principal_outstanding,
-            'totalDebtPerAssessedValuation': self.total_debt_per_assessed_valuation
+            'taxYearAssessedValuation': self.tax_year_assessed_valuation,
+            'students': self.full_year_ada_2012
         }
