@@ -14,7 +14,7 @@ class Command(BaseCommand):
     help = "Import all shapefiles."
 
     def handle(self, *args, **options):
-        sys.path.append(os.path.join(settings.SITE_DIR, SHAPEFILES_DIR))
+        sys.path.append(os.path.join(settings.BASE_DIR, SHAPEFILES_DIR))
         from definitions import SHAPEFILES
 
         for name, options in SHAPEFILES.items():
