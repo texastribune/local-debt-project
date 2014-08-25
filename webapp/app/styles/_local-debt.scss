@@ -42,7 +42,6 @@ button,
 
 table {
   background: $white;
-  // margin-bottom: 1em;
 
   th {
     padding: 1em .5em;
@@ -108,7 +107,7 @@ table {
   }
 
   td {
-    padding: .5em;
+    padding: .75em;
 
     @include media($bp-table) {
       padding: .25em .5em;
@@ -118,7 +117,6 @@ table {
   tr {
     @include media($bp-table) {
       display: block;
-      margin: .25em;
     }
     &.important {
       border-bottom: 1px solid $line-gray;
