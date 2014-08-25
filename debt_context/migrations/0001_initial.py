@@ -26,6 +26,7 @@ class Migration(SchemaMigration):
             ('tax_debt_to_assessed_valuation', self.gf('django.db.models.fields.FloatField')(null=True)),
             ('tax_debt_service_to_av', self.gf('django.db.models.fields.FloatField')(null=True)),
             ('tax_debt_per_capita', self.gf('django.db.models.fields.FloatField')(null=True)),
+            ('shape', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['boundaries.Shape'])),
         ))
         db.send_create_signal(u'debt_context', ['CityDebt'])
 
@@ -47,6 +48,7 @@ class Migration(SchemaMigration):
             ('tax_debt_to_assessed_valuation', self.gf('django.db.models.fields.FloatField')(null=True)),
             ('tax_debt_service_to_av', self.gf('django.db.models.fields.FloatField')(null=True)),
             ('tax_debt_per_capita', self.gf('django.db.models.fields.FloatField')(null=True)),
+            ('shape', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['boundaries.Shape'])),
         ))
         db.send_create_signal(u'debt_context', ['CountyDebt'])
 
@@ -57,6 +59,7 @@ class Migration(SchemaMigration):
             ('govt_id', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('issuer', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('county', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('shape', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['boundaries.Shape'])),
             ('tax_year_assessed_valuation', self.gf('django.db.models.fields.FloatField')(null=True)),
             ('full_year_ada_2012', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('voter_approved_debt_principal_outstanding', self.gf('django.db.models.fields.FloatField')(null=True)),
@@ -84,6 +87,25 @@ class Migration(SchemaMigration):
 
 
     models = {
+        u'boundaries.collection': {
+            'Meta': {'ordering': "('name',)", 'object_name': 'Collection'},
+            'authority': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'count': ('django.db.models.fields.IntegerField', [], {}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'last_updated': ('django.db.models.fields.DateField', [], {}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '255'}),
+            'source_url': ('django.db.models.fields.URLField', [], {'max_length': '255'})
+        },
+        u'boundaries.shape': {
+            'Meta': {'ordering': "('name',)", 'object_name': 'Shape'},
+            'collection': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'shapes'", 'to': u"orm['boundaries.Collection']"}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'identifier': ('django.db.models.fields.IntegerField', [], {}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'shape': ('django.contrib.gis.db.models.fields.MultiPolygonField', [], {}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '255'})
+        },
         u'debt_context.citydebt': {
             'Meta': {'object_name': 'CityDebt'},
             'county': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
@@ -97,6 +119,7 @@ class Migration(SchemaMigration):
             'issuer': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'm_and_o_tax_rate': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'population': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'shape': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['boundaries.Shape']"}),
             'tax_debt_per_capita': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'tax_debt_service_to_av': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'tax_debt_to_assessed_valuation': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
@@ -116,6 +139,7 @@ class Migration(SchemaMigration):
             'issuer': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'm_and_o_tax_rate': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'population': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'shape': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['boundaries.Shape']"}),
             'tax_debt_per_capita': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'tax_debt_service_to_av': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'tax_debt_to_assessed_valuation': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
@@ -134,6 +158,7 @@ class Migration(SchemaMigration):
             'm_and_o_debt_interest_outstanding': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'm_and_o_debt_principal_outstanding': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'm_and_o_debt_service_outstanding': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
+            'shape': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['boundaries.Shape']"}),
             'tax_year_assessed_valuation': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'total_debt_per_assessed_valuation': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
             'total_debt_per_student': ('django.db.models.fields.FloatField', [], {'null': 'True'}),
