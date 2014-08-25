@@ -145,6 +145,7 @@ class SchoolDistrictDebt(models.Model):
             'mODebtPrincipal':            n_a_if_none(self.m_and_o_debt_principal_outstanding),
             'mODebtInterest':             n_a_if_none(self.m_and_o_debt_interest_outstanding),
             'mODebtService':              n_a_if_none(self.m_and_o_debt_service_outstanding),
+            'combinedDebt':               n_a_if_none(self.combined_principal_debt),
             'issuerType':                 'isd'
         }
 
