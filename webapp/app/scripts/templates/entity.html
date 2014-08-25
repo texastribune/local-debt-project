@@ -34,9 +34,22 @@
           <td>Total M&amp;O Debt Service</td>
           <td><%= formatMoney(mODebtService) %></td>
         </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
         <tr class="important">
           <td>Combined Debt</td>
           <td><%= formatMoney(combinedDebt) %></td>
+        </tr>
+        <tr>
+          <td>Debt per Student</td>
+          <td><%= formatMoney(debtPerStudent) %>
+          </td>
+        </tr>
+        <tr>
+          <td>Ratio of Debt to Property Tax Base</td>
+          <td><%= formatPercent(totalDebtPerAV) %></td>
         </tr>
       </tbody>
     </table>
@@ -67,7 +80,7 @@
           </td>
         </tr>
         <tr>
-          <td>Debt to Property Tax Valuation</td>
+          <td>Debt to Property Tax Base</td>
           <td><%= formatPercent(taxDebtToAssessedValuation) %></td>
         </tr>
       </tbody>
@@ -104,9 +117,9 @@
         <thead>
           <tr>
             <th>County</th>
-            <th>Property Tax Assessment</th>
+            <th>Property Tax Base (PTB)</th>
             <th>Debt</th>
-            <th>Ratio of Debt to PTA</th>
+            <th>Ratio of Debt to TPB</th>
           </tr>
         </thead>
         <tbody>

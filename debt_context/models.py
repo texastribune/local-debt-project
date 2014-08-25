@@ -139,6 +139,7 @@ class SchoolDistrictDebt(models.Model):
             'students':                   n_a_if_none(self.full_year_ada_2012),
             'taxYearAssessedValuation':   n_a_if_none(self.tax_year_assessed_valuation),
             'debtPerStudent':             n_a_if_none(self.total_debt_per_student),
+            'totalDebtPerAV':             n_a_if_none(self.total_debt_per_assessed_valuation),
             'voterApprovedDebtPrincipal': n_a_if_none(self.voter_approved_debt_principal_outstanding),
             'voterApprovedDebtInterest':  n_a_if_none(self.voter_approved_debt_interest_outstanding),
             'voterApprovedDebtService':   n_a_if_none(self.voter_approved_debt_service_outstanding),
