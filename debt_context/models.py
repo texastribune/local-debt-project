@@ -125,6 +125,7 @@ class SchoolDistrictDebt(models.Model):
     # Composed fields
     total_debt_per_student            = models.FloatField(null=True)
     total_debt_per_assessed_valuation = models.FloatField(null=True)
+    combined_principal_debt           = models.FloatField(null=True)
 
     sheets= {
         '13VotedDebt': range(7, 1027),

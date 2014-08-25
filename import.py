@@ -105,6 +105,7 @@ def import_school_district_debt():
     for school_debt in SchoolDistrictDebt.objects.all():
         school_debt.total_debt_per_student = debt_per_student(school_debt)
         school_debt.total_debt_per_assessed_valuation = debt_per_assessed_valuation(school_debt)
+        school_debt.combined_principal_debt = total_debt(school_debt)
         school_debt.save()
 
 
