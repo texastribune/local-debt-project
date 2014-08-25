@@ -2,41 +2,36 @@
   <div id="<%= issuerType %>-jump" class="data-box">
     <div class="debt-box-title  <%= issuerType %>">
       <h3><%= issuer %></h3>
-      <p class="pop">County: <%= county %></p>
       <p class="pop">Students: <%= addCommas(fullYearAda2012) %></p>
     </div>
     <table>
       <tbody>
         <tr>
-          <th>Voter Approved</th>
-          <th></th>
+          <td>Voter Approved Debt</td>
+          <td><%= formatMoney(voterApprovedDebtPrincipal) %></td>
         </tr>
         <tr>
-          <td>Debt Principal</td>
-          <td>$<%= formatMoney(voterApprovedDebtPrincipal) %></td>
-        </tr>
-        <tr>
-          <td>Debt Interest</td>
+          <td>Interest</td>
           <td><%= formatMoney(voterApprovedDebtInterest) %></td>
         </tr>
-        <tr>
-          <td>Debt Service</td>
+        <tr class="important">
+          <td>Total Voter Approved Debt Service</td>
           <td><%= formatMoney(voterApprovedDebtService) %></td>
         </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
         <tr>
-          <th>M&O</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>Debt Principal</td>
+          <td>Maintenance &amp; Operations Debt (M&amp;O)</td>
           <td><%= formatMoney(mODebtPrincipal) %></td>
         </tr>
         <tr>
-          <td>Debt Interest</td>
+          <td>Interest</td>
           <td><%= formatMoney(mODebtInterest) %></td>
         </tr>
-        <tr>
-          <td>Debt Service</td>
+        <tr class="important">
+          <td>Total M&amp;O Debt Service</td>
           <td><%= formatMoney(mODebtService) %></td>
         </tr>
       </tbody>
@@ -46,15 +41,12 @@
   <div id="<%= issuerType %>-jump" class="data-box">
     <div class="debt-box-title <%= issuerType %>">
       <h3><%= issuer %></h3>
-      <% if (isACity) { %>
-      <p class="pop">County <%= county %></p>
-      <% } %>
       <p class="pop">Pop. <%= addCommas(population) %></p>
     </div>
     <table>
       <tbody>
         <tr>
-          <td>Principal Debt</td>
+          <td>Debt</td>
           <td><%= formatMoney(debtPrincipal) %></td>
         </tr>
         <tr>
@@ -62,7 +54,7 @@
           <td><%= formatMoney(debtInterest) %></td>
         </tr>
         <tr class="important">
-          <td>Outstanding Debt</td>
+          <td>Total Debt Service</td>
           <td><%= formatMoney(debtService) %> </td>
         </tr>
         <tr>
@@ -71,7 +63,7 @@
           </td>
         </tr>
         <tr>
-          <td>Debt to AV</td>
+          <td>Debt to Property Tax Valuation</td>
           <td><%= formatPercent(taxDebtToAssessedValuation) %></td>
         </tr>
       </tbody>
@@ -92,7 +84,7 @@
           <tr>
             <th>County</th>
             <th>Population</th>
-            <th>Outstanding Debt</th>
+            <th>Debt</th>
             <th>Debt per Person</th>
           </tr>
         </thead>
@@ -108,9 +100,9 @@
         <thead>
           <tr>
             <th>County</th>
-            <th>Assessed Valuation (AV)</th>
-            <th>Outstanding Debt</th>
-            <th>Ratio of Debt to AV</th>
+            <th>Property Tax Assessment</th>
+            <th>Debt</th>
+            <th>Ratio of Debt to PTA</th>
           </tr>
         </thead>
         <tbody>
