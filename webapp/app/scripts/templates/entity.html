@@ -14,14 +14,10 @@
           <td>Interest</td>
           <td><%= formatMoney(voterApprovedDebtInterest) %></td>
         </tr>
-        <tr class="important">
-          <td>Total Voter Approved Debt Service</td>
-          <td><%= formatMoney(voterApprovedDebtService) %></td>
+        <tr>
+          <td><strong>Total Voter Approved Debt Service</strong></td>
+          <td><strong><%= formatMoney(voterApprovedDebtService) %></strong></td>
         </tr>
-      </tbody>
-    </table>
-    <table>
-      <tbody>
         <tr>
           <td>Maintenance &amp; Operations Debt (M&amp;O)</td>
           <td><%= formatMoney(mODebtPrincipal) %></td>
@@ -30,16 +26,12 @@
           <td>Interest</td>
           <td><%= formatMoney(mODebtInterest) %></td>
         </tr>
-        <tr class="important">
-          <td>Total M&amp;O Debt Service</td>
-          <td><%= formatMoney(mODebtService) %></td>
+        <tr>
+          <td><strong>Total M&amp;O Debt Service</strong></td>
+          <td><strong><%= formatMoney(mODebtService) %></strong></td>
         </tr>
-      </tbody>
-    </table>
-    <table>
-      <tbody>
         <tr class="important">
-          <td>Combined Debt</td>
+          <td>Total Combined Debt Service</td>
           <td><%= formatMoney(combinedDebt) %></td>
         </tr>
         <tr>
