@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Local Debt Explorer | The Texas Tribune</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) /styles/main.css -->
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="container">
+    <div class="branding">
+      <a href="//www.texastribune.org/"><img class="trib-logo" alt="The Texas Tribune" src="/images/tt-logo-white.png"></a>
+    </div>
+  </div>
+</header>
+
+<div class="banner">
+  <div class="grand-header-image"></div>
+  <header class="grand-header">
+    <h1><a href="/">Local Debt Explorer</a></h1>
+    <p>See the outstanding debt in your community</p>
+  </header>
+</div>
+
+<div class="container">
+  <div class="row share-row">
+    <a target="_blank" title="share on Twitter" href="http://twitter.com/share?text=Check out the Texas Hospitals Explorer and learn more about quality of care at Texas' 377 hospitals&url=http://hospitals.texastribune.org/&hashtags=txhospitals">
+      <div class="share-cell first-share">
+        <i class="fa fa-twitter"></i> Tweet
+      </div>
+    </a>
+    <a target="_blank" title="share on Facebook" href="http://www.facebook.com/sharer.php?u=http://hospitals.texastribune.org/">
+      <div class="share-cell">
+        <i class="fa fa-facebook"></i> Recommend
+      </div>
+    </a>
+  </div>
+
+  <div class="prose">
+    <p>Texas counties, cities and school districts have more than $100 billion in tax-supported debt. Across Texas over the last decade, the total amount of outstanding local debt has grown faster than the state’s population. Use our Local Debt Explorer to find out how much tax-supported debt is held by your city, county and school district.</p>
+  </div>
+
+  {% block content %}{% endblock %}
+
+  <div class="about">
+    <hr class="yellow"></hr>
+    <h3>ABOUT</h3>
+    <p class="about-desc">The series examines the factors driving local communities around Texas to issue billions of dollars in debt. The data comes from the Texas Bond Review Board and reflects each entity’s  debt load as of August 2013. </p>
+    <h3>Contributors</h3>
+    <ul>
+      <li>
+        <p class="contributor"><a href="http://www.texastribune.org/about/staff/aman-batheja/">Aman Batheja</a></p>
+        <p class="handle">Reporter | <a href="https://twitter.com/amanbatheja" target="_blank">@amanbatheja</a></p>
+      </li>
+      <li>
+        <p class="contributor"><a href="http://www.texastribune.org/about/staff/becca-aaronson/">Becca Aaronson</a></p>
+        <p class="handle">News Apps Developer | <a href="https://twitter.com/becca_aa" target="_blank">@becca_aa</a></p>
+      </li>
+      <li>
+        <p class="contributor"><a href="http://www.texastribune.org/about/staff/ryan-murphy/">Ryan Murphy</a></p>
+        <p class="handle">News Apps Team Lead | <a href="https://twitter.com/rdmurphy" target="_blank">@rdmurphy</a></p>
+      </li>
+      <li>
+        <p class="contributor"><a href="mailto:mvanetta@texastribune.org">Marcos Vanetta</a></p>
+        <p class="handle">Knight/Mozilla Fellow | <a href="https://twitter.com/malev" target="_blank">@malev</a></p>
+      </li>
+    </ul>
+    <h3>Art & Design</h3>
+    <ul>
+      <li>
+        <p class="contributor"><a href="mailto:bhasson@texastribune.org">Ben Hasson</a></p>
+        <p class="handle">Web Designer | <a href="https://twitter.com/been_hussln" target="_blank">@been_hussln</a></p>
+      </li>
+      <li>
+        <p class="contributor"><a href="mailto:twiseman@texastribune.org">Todd Wiseman</a></p>
+        <p class="handle">Multimedia Producer | <a href="https://twitter.com/wisemeister" target="_blank">@Wisemeister</a></p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content-block">
+    <nav class="first-nav">
+      <ul>
+        <li>© 2014 <a href="http://www.texastribune.org/">The Texas Tribune</a></li>
+      </ul>
+    </nav>
+    <nav class="last-nav">
+      <ul>
+        <li><a href="http://www.texastribune.org/about/">About Us</a></li>
+        <li><a href="http://www.texastribune.org/contact/">Contact Us</a></li>
+        <li><a href="http://www.texastribune.org/support-us/donors-and-members/">Who Funds Us?</a></li>
+        <li><a href="http://www.texastribune.org/terms-of-service/">Terms of Service</a></li>
+        <li><a href="http://www.texastribune.org/ethics/">Code of Ethics</a></li>
+        <li><a href="http://www.texastribune.org/privacy/">Privacy Policy</a></li>
+        <li class="donor-item"><a href="https://www.texastribune.org/join/">Donate</a></li>
+      </ul>
+    </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+  // (function(c,o,r,g,i,s){c.GoogleAnalyticsObject=g;c[g]||(c[g]=
+  // function(){(c[g].q=c[g].q||[]).push(arguments)});c[g].g=+new Date;
+  // i=o.createElement(r);s=o.getElementsByTagName(r)[0];
+  // i.src='//www.google-analytics.com/analytics.js';
+  // s.parentNode.insertBefore(i,s)}(window,document,'script','ga'));
+  // ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>
+
+<!-- build:js({app,.tmp}) scripts/main.js -->
+<script src="scripts/templates.js"></script>
+<script src="/scripts/app.js"></script>
+<script src="/scripts/mixins.js"></script>
+<script src="/scripts/controllers/main_controller.js"></script>
+<script src="/scripts/controllers/search_controller.js"></script>
+<script src="/scripts/models.js"></script>
+<script src="/scripts/collections.js"></script>
+<script src="/scripts/views/entity_view.js"></script>
+<script src="/scripts/views/entities_view.js"></script>
+<script src="/scripts/views/go_to_button_view.js"></script>
+<script src="/scripts/views/go_to_buttons_view.js"></script>
+<script src="/scripts/views/search_view.js"></script>
+<script src="/scripts/views/population_context_row_view.js"></script>
+<script src="/scripts/views/population_context_view.js"></script>
+<script src="/scripts/views/av_context_row_view.js"></script>
+<script src="/scripts/views/av_context_view.js"></script>
+<script src="/scripts/views/students_context_row_view.js"></script>
+<script src="/scripts/views/students_context_view.js"></script>
+<script src="/scripts/views/isd_av_context_row_view.js"></script>
+<script src="/scripts/views/isd_av_context_view.js"></script>
+<script src="/scripts/layouts.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

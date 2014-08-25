@@ -1,5 +1,6 @@
 import json
 from django.http import HttpResponse
+from django.shortcuts import render
 from debt_context.location_service import LocationService
 from debt_context.search_service import SearchService
 from debt_context.city_context_service import CityContextService
@@ -66,3 +67,7 @@ def search(request):
     }
 
     return JsonpResponse(json.dumps(output), request=request)
+
+
+def home(request):
+    return render(request, 'index.html')
