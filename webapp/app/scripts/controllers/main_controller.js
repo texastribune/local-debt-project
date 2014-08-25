@@ -61,7 +61,7 @@ app.Controllers.Main = Marionette.Controller.extend({
       model: isd
     }));
     this.isdRegion.debtByPop.show(new app.Views.StudentsContext({
-      collection: new app.Collections.Entities(data.debtPerStudent.isd)
+      collection: new app.Collections.Entities(data.students.isd)
     }));
     this.isdRegion.debtByAV.show(new app.Views.ISDAVContext({
       collection: new app.Collections.Entities(data.debtToAssessedValuation.isd)

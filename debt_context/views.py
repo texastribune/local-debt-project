@@ -60,8 +60,8 @@ def search(request):
             'county': county_context_service.tax_debt_to_assessed_valuation(),
             'isd': isd_context_service.debt_to_assessed_valuation()
         },
-        'debtPerStudent': {
-            'isd': isd_context_service.debt_per_student()
+        'students': {
+            'isd': isd_context_service.debt_similar_school_size()
         }
     }
 
