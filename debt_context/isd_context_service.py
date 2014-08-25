@@ -15,6 +15,26 @@ class ISDContextService(ContextBase):
     def debt_similar_school_size(self):
         return self.hashify(self.context_number_of_students())
 
+    def similar_assessed_valuation(self):
+        return self.hashify(self.context_assessed_valuation())
+
+    def context_assessed_valuation(self):
+        output = []
+        tax_year_assessed_valuation = self.isd.tax_year_assessed_valuation
+
+        if tax_year_assessed_valuation == None:
+            return [self.isd]
+
+        output = output + list(SchoolDistrictDebt.objects.filter(tax_year_assessed_valuation__gt=\
+            tax_year_assessed_valuation).order_by('tax_year_assessed_valuation')[:2])
+
+        output.append(self.isd)
+
+        output = output + list(SchoolDistrictDebt.objects.filter(tax_year_assessed_valuation__lt=\
+            tax_year_assessed_valuation).order_by('-tax_year_assessed_valuation')[:2])
+
+        return output
+
     def context_number_of_students(self):
         output = []
         full_year_ada_2012 = self.isd.full_year_ada_2012

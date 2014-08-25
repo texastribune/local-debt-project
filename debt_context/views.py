@@ -58,7 +58,7 @@ def search(request):
         'debtToAssessedValuation': {
             'city': city_context_service.tax_debt_to_assessed_valuation(),
             'county': county_context_service.tax_debt_to_assessed_valuation(),
-            'isd': isd_context_service.debt_to_assessed_valuation()
+            'isd': isd_context_service.similar_assessed_valuation()
         },
         'students': {
             'isd': isd_context_service.debt_similar_school_size()

@@ -154,5 +154,6 @@ class SchoolDistrictDebt(models.Model):
             'combinedDebt': self.combined_principal_debt,
             'totalDebtPerStudent': self.total_debt_per_student,
             'taxYearAssessedValuation': self.tax_year_assessed_valuation,
+            'totalDebtPerAV': self.total_debt_per_assessed_valuation,
             'students': self.full_year_ada_2012
         }
