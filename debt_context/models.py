@@ -1,4 +1,5 @@
 from django.db import models
+from boundaries.models import Shape
 
 
 def n_a_if_none(value):
@@ -26,6 +27,7 @@ class CityDebt(models.Model):
     tax_debt_to_assessed_valuation = models.FloatField(null=True)
     tax_debt_service_to_av         = models.FloatField(null=True)
     tax_debt_per_capita            = models.FloatField(null=True)
+    shape                          = models.ForeignKey(Shape)
 
     data_file = '13citytrlp.xls'
     data_position = range(7, 1240)
@@ -73,6 +75,7 @@ class CountyDebt(models.Model):
     tax_debt_to_assessed_valuation = models.FloatField(null=True)
     tax_debt_service_to_av         = models.FloatField(null=True)
     tax_debt_per_capita            = models.FloatField(null=True)
+    shape                          = models.ForeignKey(Shape)
 
     data_file = '13cnytrlp.xls'
     data_position = range(7, 268)
@@ -107,6 +110,7 @@ class SchoolDistrictDebt(models.Model):
     govt_id = models.CharField(max_length=200)
     issuer = models.CharField(max_length=200)
     county = models.CharField(max_length=200)
+    shape = models.ForeignKey(Shape)
 
     # General info
     tax_year_assessed_valuation               = models.FloatField(null=True)
