@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import datetime
 import xlrd
@@ -40,6 +42,31 @@ def debt_per_assessed_valuation(school_debt):
     else:
         return total_debt(school_debt) / av
 
+def city_names_table(name):
+    names_table = {
+        "Bay View": "BayView",
+        "Colony": "The Colony",
+        "Cut-N-Shoot": "Cut and Shoot",
+        "Fairview (a)": "Fairview",
+        "Hillcrest Village": "Hillcrest",
+        "Hills, The": "The Hills",
+        "Miller’s Cove": "Miller's Cove",
+        "Morgan’s Point": "Morgan's Point",
+        "Morgan’s Point Resort": "Morgan's Point Resort",
+        "O’Brien": "O'Brien",
+        "O’Donnell": "O'Donnell",
+        "Oakridge": "Oak Ridge",
+        "Pecos City": "Pecos",
+        "Pernitas Point": "Pernitas",
+        "Poyner": "Poynor",
+        "Reno (a)": "Reno",
+        "Woodbranch Village": "Woodbranch"
+    }
+    if name in names_table:
+        return names_table[name]
+    else:
+        return name
+
 def find_shape(row, klass=None):
     if klass == CountyDebt:
         county_name = row[2].value
@@ -53,7 +80,7 @@ def find_shape(row, klass=None):
         city_name = row[1].value
         collection_id = Collection.objects.filter(name='Cities').first().id
         shape = Shape.objects.filter(collection_id=collection_id,\
-            name__icontains=city_name).first()
+            name__icontains=city_names_table(city_name)).first()
 
         return shape
 
@@ -99,7 +126,7 @@ def import_city_and_county_debt():
                     )
                 debt.save()
             else:
-                print "%s,%s has not been imported" % (row[1].value, row[2].value)
+                print "%s, %s has not been imported" % (row[1].value, row[2].value)
 
 
 def import_school_district_debt():
@@ -128,7 +155,7 @@ def import_school_district_debt():
                 )
             debt.save()
         else:
-            print "%s,%s has not been imported" % (row[1].value, row[2].value)
+            print "%s, %s has not been imported" % (row[1].value, row[2].value)
 
     for index in SchoolDistrictDebt.sheets['13M&O Debt']:
         mo_row = mo_debt_sheet.row(index)
@@ -150,5 +177,5 @@ def import_school_district_debt():
 
 if __name__ == "__main__":
     print "Starting..."
-    # import_city_and_county_debt()
+    import_city_and_county_debt()
     import_school_district_debt()
