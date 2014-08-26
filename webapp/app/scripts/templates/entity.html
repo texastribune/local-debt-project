@@ -5,13 +5,13 @@
   </div>
   <div class="explainer-box">
     <p class="explainer-text">This Explorer provides data on the two most common kinds of debt that school districts issue: Voter-Approved Debt, which is often used for capital projects such as building and renovations, and Maintenance &amp; Operations Debt, better known as M&amp;O debt, which can be used for administration and operational costs such as classroom equipment. The Explorer shows the district’s Outstanding Taxpayer-Supported Debt, the expected total Interest to be paid on that debt, and the Debt Service, which is the sum of the debt and interest. It also looks at the district’s 2012 student population and the size of its property tax base to calculate Outstanding Debt Per Student and Ratio of Outstanding Debt to Property Tax Base.</p>
-    <p class="explainer-text">To provide context, the Explorer compares the <%= toDistrict(issuerType) %>'s outstanding debt to others with similar populations and those with property tax bases of similar size.</p>
+    <p class="explainer-text">To provide context, the Explorer compares the <%= toDistrict(issuerType) %>'s outstanding debt to <%= plural(issuerType) %> with similar populations and those with property tax bases of similar size.</p>
   </div>
   <div class="data-box">
     <table>
       <tbody>
         <tr>
-          <td>Voter Approved Debt</td>
+          <td>Voter-approved debt</td>
           <td><%= formatMoney(voterApprovedDebtPrincipal) %></td>
         </tr>
         <tr>
@@ -19,11 +19,11 @@
           <td><%= formatMoney(voterApprovedDebtInterest) %></td>
         </tr>
         <tr>
-          <td><strong>Total Voter Approved Debt Service</strong></td>
+          <td><strong>Total voter-approved debt service</strong></td>
           <td><strong><%= formatMoney(voterApprovedDebtService) %></strong></td>
         </tr>
         <tr>
-          <td>Maintenance &amp; Operations Debt (M&amp;O)</td>
+          <td>Maintenance and operations debt (M&amp;O)</td>
           <td><%= formatMoney(mODebtPrincipal) %></td>
         </tr>
         <tr>
@@ -31,20 +31,20 @@
           <td><%= formatMoney(mODebtInterest) %></td>
         </tr>
         <tr>
-          <td><strong>Total M&amp;O Debt Service</strong></td>
+          <td><strong>Total M&amp;O debt service</strong></td>
           <td><strong><%= formatMoney(mODebtService) %></strong></td>
         </tr>
         <tr class="important">
-          <td>Total Combined Debt Service</td>
+          <td>Total combined debt service</td>
           <td><%= formatMoney(combinedDebt) %></td>
         </tr>
         <tr>
-          <td>Debt per Student</td>
+          <td>Debt per student</td>
           <td><%= formatMoney(debtPerStudent) %>
           </td>
         </tr>
         <tr>
-          <td>Ratio of Debt to Property Tax Base</td>
+          <td>Ratio of debt to property tax base</td>
           <td><%= formatPercent(totalDebtPerAV) %></td>
         </tr>
       </tbody>
@@ -57,7 +57,7 @@
   </div>
   <div class="explainer-box">
     <p class="explainer-text">This Explorer shows a <%= issuerType %>'s outstanding taxpayer-supported debt, the expected total interest to be paid on that debt, and the debt service, which is the sum of the debt and interest. It also uses the <%= issuerType %>'s population and the size of its property tax base to calculate the outstanding debt per person and the ratio of outstanding debt to property tax base.</p>
-    <p class="explainer-text">To provide context, this Explorer compares this <%= toDistrict(issuerType) %>'s outstanding debt to others with similar populations and property tax bases.</p>
+    <p class="explainer-text">To provide context, this Explorer compares this <%= toDistrict(issuerType) %>'s outstanding debt to <%= plural(issuerType) %> with similar populations and property tax bases.</p>
   </div>
   <div class="data-box">
     <table>

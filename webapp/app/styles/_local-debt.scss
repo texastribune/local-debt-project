@@ -2,7 +2,7 @@
 
 $bp: new-breakpoint(min-width 866px);
 $bp-table: new-breakpoint(max-width 480px);
-$bp-jump: new-breakpoint(max-width 866px);
+$bp-jump: new-breakpoint(max-width 600px);
 
 
 $county: #90d3c8;
@@ -15,6 +15,7 @@ $isd-bk: transparentize($isd, .75);
 @mixin jump-button($issuer-type) {
   display: inline-block;
   text-decoration: none;
+  width: 100%;
 
   &:hover {
     background-color: $issuer-type;
@@ -26,7 +27,6 @@ $isd-bk: transparentize($isd, .75);
 
   @include media($bp-jump) {
     display: block;
-    width: 100%;
   }
 }
 
@@ -79,15 +79,18 @@ table {
 
 .go-to-buttons {
   @extend %content-block;
+  @include features-layout ($bp, 12, 8);
   margin-bottom: 1em;
 }
 
 .go-to-button {
   display: inline-block;
   margin-right: .25em;
+  width: 32%;
 
   @include media($bp-jump) {
     display: block;
+    width: 100%;
   }
 
   .button {
