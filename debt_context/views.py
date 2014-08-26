@@ -21,9 +21,10 @@ class JsonpResponse(HttpResponse):
 
 def search(request):
     issuers = SearchService(query=request.GET['q']).issuers()
+    issuers.sort()
 
     output = []
-    for issuer in SearchService(query=request.GET['q']).issuers():
+    for issuer in issuers:
         output.append(
             {
                 'current': issuer.to_dict(),
