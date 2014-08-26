@@ -25,10 +25,16 @@ def search(request):
     issuers = SearchService(query=request.GET['q']).issuers()
     issuers.sort()
 
-    output = []
+    output = {
+        'issuers': [],
+        'meta': {
+            'q': request.GET['q'],
+            'status': 'ok'
+        }
+    }
 
     for issuer in issuers:
-        output.append(
+        output['issuers'].append(
             {
                 'current': issuer.to_dict(),
                 'context': ContextService(issuer).context()
