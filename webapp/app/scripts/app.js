@@ -20,22 +20,11 @@ app.addRegions({
   'isdRegion': '#isd-region'
 });
 
-app.Routers.Main = Backbone.Marionette.AppRouter.extend({
-  appRoutes: {
-    '': 'index'
-  }
-});
-
 app.addInitializer(function() {
   'use strict';
 
-  this.mainRouter = new app.Routers.Main( {
-    controller: new app.Controllers.Main()
-  });
-
-  if ( Backbone.history ) {
-    Backbone.history.start();
-  }
+  var mainController = new app.Controllers.Main();
+  mainController.index();
 });
 
 $(document).ready(function(){

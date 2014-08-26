@@ -51,8 +51,7 @@ CREATE DATABASE local_debt;
 Then you need to run:
 
     pip install -r requirements.txt
-    python manage.py syncdb
-    python import.py
+    make resetdb
 
 You will also need to setup the **webapp**. Just run:
 
@@ -62,4 +61,3 @@ You will also need to setup the **webapp**. Just run:
     grunt serve
 
   Feel free to start hacking.
-
