@@ -14,6 +14,7 @@ app.Settings = {
 
 app.addRegions({
   'searchRegion': '#search',
+  'searchStringRegion': '#search-string',
   'goToRegion' : '#go-to-buttons',
   'countyRegion': '#county-region',
   'cityRegion': '#city-region',

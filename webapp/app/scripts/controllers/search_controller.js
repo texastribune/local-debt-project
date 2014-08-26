@@ -21,11 +21,22 @@ app.Controllers.Search = Marionette.Controller.extend({
       jsonp: 'callback',
       jsonpCallback: 'jsonpCallback',
       success: function(data){
-        self.trigger('location:found', data);
+
+        self.displaySearchString(data).trigger('location:found', data);
       }
     }).fail(function() {
       this.searchView.showNotTexasError();
     });
+  },
+
+  displaySearchString: function(data) {
+    'use strict';
+    this.searchMessageView = new app.Views.SearchMessage({
+      model: new app.Models.SearchString(data.meta)
+    });
+    app.searchStringRegion.show(this.searchMessageView);
+
+    return this;
   },
 
   searchByLocation: function() {
