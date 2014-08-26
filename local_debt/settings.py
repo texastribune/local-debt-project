@@ -36,7 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'boundaries',
     'debt_context',
+
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,7 +62,7 @@ WSGI_APPLICATION = 'local_debt.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'local_debt',
         'USER': '',
         'PASSWORD': '',
