@@ -54,6 +54,7 @@ class CityDebt(models.Model):
             'population': n_a_if_none(self.population),
             'taxDebtPerCapita': n_a_if_none(self.tax_debt_per_capita),
             'taxDebtToAssessedValuation': n_a_if_none(self.tax_debt_to_assessed_valuation),
+            'taxYearValuation': n_a_if_none(self.tax_year_valuation),
             'issuerType': 'city'
         }
 
@@ -102,6 +103,7 @@ class CountyDebt(models.Model):
             'population': n_a_if_none(self.population),
             'taxDebtPerCapita': n_a_if_none(self.tax_debt_per_capita),
             'taxDebtToAssessedValuation': n_a_if_none(self.tax_debt_to_assessed_valuation),
+            'taxYearValuation': n_a_if_none(self.tax_year_valuation),
             'issuerType': 'county'
         }
 

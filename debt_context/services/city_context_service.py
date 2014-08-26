@@ -38,17 +38,17 @@ class CityContextService(ContextBase):
 
         return output
 
-    def context_tax_debt_to_assessed_valuation(self):
+    def context_assessed_valuation(self):
         output = []
-        tax_debt_to_assessed_valuation = self.city.tax_debt_to_assessed_valuation
-        if tax_debt_to_assessed_valuation == None:
+        tax_year_valuation = self.city.tax_year_valuation
+        if tax_year_valuation == None:
             return [self.city]
 
-        output = output + list(CityDebt.objects.filter(tax_debt_to_assessed_valuation__gt=\
-            tax_debt_to_assessed_valuation).order_by('tax_debt_to_assessed_valuation')[:2])
+        output = output + list(CityDebt.objects.filter(tax_year_valuation__gt=\
+            tax_year_valuation).order_by('tax_year_valuation')[:2])
 
         output.append(self.city)
-        output = output + list(CityDebt.objects.filter(tax_debt_to_assessed_valuation__gt=\
-            tax_debt_to_assessed_valuation).order_by('-tax_debt_to_assessed_valuation')[:2])
+        output = output + list(CityDebt.objects.filter(tax_year_valuation__lt=\
+            tax_year_valuation).order_by('-tax_year_valuation')[:2])
 
         return output

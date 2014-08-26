@@ -42,7 +42,7 @@ app.Controllers.Main = Marionette.Controller.extend({
       collection: new app.Collections.Entities(county.get('context').population)
     }));
     this.countyLayout.debtByAV.show(new app.Views.AVContext({
-      collection: new app.Collections.Entities(county.get('context').debtToAssessedValuation)
+      collection: new app.Collections.Entities(county.get('context').assessedValuation)
     }));
   },
 
@@ -58,7 +58,7 @@ app.Controllers.Main = Marionette.Controller.extend({
       collection: new app.Collections.Entities(city.get('context').population)
     }));
     this.cityLayout.debtByAV.show(new app.Views.AVContext({
-      collection: new app.Collections.Entities(city.get('context').debtToAssessedValuation)
+      collection: new app.Collections.Entities(city.get('context').assessedValuation)
     }));
   },
 

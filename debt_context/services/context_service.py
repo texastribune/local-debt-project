@@ -15,12 +15,12 @@ class ContextService(object):
         if type(self.issuer) is CityDebt:
             return {
                 'population': self.city_context_service.population_context(),
-                'debtToAssessedValuation': self.city_context_service.tax_debt_to_assessed_valuation()
+                'assessedValuation': self.city_context_service.assessed_valuation()
             }
         elif type(self.issuer) is CountyDebt:
             return {
                 'population': self.county_context_service.population_context(),
-                'debtToAssessedValuation': self.county_context_service.tax_debt_to_assessed_valuation()
+                'assessedValuation': self.county_context_service.assessed_valuation()
             }
         elif type(self.issuer) is SchoolDistrictDebt:
             return {
