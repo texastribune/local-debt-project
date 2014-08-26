@@ -3,5 +3,5 @@ from debt_context import views
 
 urlpatterns = patterns('',
     url(r'^api/search', views.search, name='search'),
-    url(r'^', views.home, name='home'),
+    # url(r'^', views.home, name='home'),
 )
