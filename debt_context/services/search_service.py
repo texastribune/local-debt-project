@@ -21,6 +21,12 @@ class SearchService(object):
             self._cache_geo_data = self.geo_coder()
         return self._cache_geo_data
 
+    def status(self):
+        return {
+            'status': self.geo_data()['status'],
+            'display_name': self.geo_data()['display_name']
+        }
+
     def get_lng(self):
         return float(self.geo_data()['lng'])
 
