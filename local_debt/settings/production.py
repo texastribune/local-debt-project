@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 ##########################
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {}
+# DATABASES = {}
 
 
 #######################

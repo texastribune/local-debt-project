@@ -4,6 +4,7 @@
 
 import os
 
+import dj_database_url
 
 ######################
 # PATH CONFIGURATION #
@@ -79,14 +80,7 @@ MIDDLEWARE_CLASSES = (
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
+    'default': dj_database_url.config(default='postgis://localhost/local_debt')
 }
 
 
@@ -133,23 +127,22 @@ USE_TZ = True
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#template-dirs
 TEMPLATE_DIRS = (
-    os.path.join(SITE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
-
 
 #############################
 # STATIC FILE CONFIGURATION #
 #############################
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#static-root
-STATIC_ROOT = os.path.join(SITE_DIR, 'assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#static-url
 STATIC_URL = '/static/'
 
 # https://docs.djangoproject.com/en/1.6/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    os.path.join(SITE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 
@@ -158,7 +151,7 @@ STATICFILES_DIRS = (
 ############################
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#media-root
-MEDIA_ROOT = os.path.join(SITE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#media-url
 MEDIA_URL = '/media/'
