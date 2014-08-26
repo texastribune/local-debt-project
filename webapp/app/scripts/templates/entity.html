@@ -52,27 +52,30 @@
       <h3><%= issuer %></h3>
       <p class="pop">Pop. <%= addCommas(population) %></p>
     </div>
+    <div>
+      <p class="explainer-text">The Explorer shows a <%= issuerType %>'s Outstanding Taxpayer-Supported Debt, the expected total Interest to be paid on that debt, and the Debt Service, which is the sum of the debt and interest. It also takes the <%= issuerType %>'s population and the size of its property tax base to calculate Outstanding Debt Per Person and Ratio of Outstanding Debt to Property Tax Base.</p>
+    </div>
     <table>
       <tbody>
-        <tr>
-          <td>Debt</td>
+        <tr class="important">
+          <td>Outstanding Debt</td>
           <td><%= formatMoney(debtPrincipal) %></td>
         </tr>
         <tr>
           <td>Interest</td>
           <td><%= formatMoney(debtInterest) %></td>
         </tr>
-        <tr class="important">
-          <td>Total Debt Service</td>
+        <tr>
+          <td>Outstanding Debt + Interest</td>
           <td><%= formatMoney(debtService) %> </td>
         </tr>
         <tr>
-          <td>Debt per Person</td>
+          <td>Outstanding Debt per Person</td>
           <td><%= formatMoney(taxDebtPerCapita) %>
           </td>
         </tr>
         <tr>
-          <td>Debt to Property Tax Base</td>
+          <td>Ratio of Outstanding Debt to Property Tax Base</td>
           <td><%= formatPercent(taxDebtToAssessedValuation) %></td>
         </tr>
       </tbody>
@@ -84,6 +87,10 @@
     <div class="debt-box-title <%= issuerType %>">
       <h3>Compare <%= issuer %></h3>
     </div>
+    <div>
+      <p class="explainer-text">To provide context, the Explorer compares the <%= toDistrict(issuerType) %>'s outstanding debt to others with similar populations and those with property tax bases of similar size.
+      </p>
+    </div>
     <div class="by-pop">
       <div class="debt-context-title <%= issuerType %>">
         <h3>Locations with a similar population</h3>
@@ -93,8 +100,8 @@
           <tr>
             <th>County</th>
             <th>Population</th>
-            <th>Debt</th>
-            <th>Debt per Person</th>
+            <th>Outstanding Debt</th>
+            <th>Outstanding Debt per Person</th>
           </tr>
         </thead>
         <tbody>
@@ -103,15 +110,15 @@
     </div>
     <div class="by-av">
       <div class="debt-context-title <%= issuerType %>">
-        <h3>Locations with a similar property-tax base</h3>
+        <h3>Locations with a similar property tax base</h3>
       </div>
       <table>
         <thead>
           <tr>
             <th>County</th>
             <th>Property Tax Base (PTB)</th>
-            <th>Debt</th>
-            <th>Ratio of Debt to TPB</th>
+            <th>Outstanding Debt</th>
+            <th>Ratio of Outstanding Debt to PTB</th>
           </tr>
         </thead>
         <tbody>

@@ -19,6 +19,13 @@ app.Mixins.Helpers = {
             return (x * 100).toFixed(2).toString() + '%';
           }
         },
+        toDistrict = function(x) {
+          if ( x === 'isd') {
+            return 'school district';
+          } else {
+            return x;
+          }
+        },
         addCommas = function(x) {
           if (typeof x === 'string' || x === null) {
             return 'N/A';
@@ -33,7 +40,8 @@ app.Mixins.Helpers = {
       'isACity': isACity,
       'formatMoney': formatMoney,
       'formatPercent': formatPercent,
-      'addCommas': addCommas
+      'addCommas': addCommas,
+      'toDistrict': toDistrict
     };
   }
 };
