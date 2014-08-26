@@ -11,7 +11,7 @@ app.Controllers.Main = Marionette.Controller.extend({
         issuer;
 
     this.entities = new app.Collections.Entities();
-    _.each(data, function(dataIssuer) {
+    _.each(data.issuers, function(dataIssuer) {
       issuer = new app.Models.Entity(dataIssuer.current);
       issuer.set('context', dataIssuer.context);
       self.entities.push(issuer);

@@ -22,13 +22,22 @@ class JsonpResponse(HttpResponse):
 
 
 def search(request):
-    issuers = SearchService(query=request.GET['q']).issuers()
+    search_service = SearchService(query=request.GET['q'])
+    status = search_service.status()
+    issuers = search_service.issuers()
     issuers.sort()
 
-    output = []
+    output = {
+        'issuers': [],
+        'meta': {
+            'q': request.GET['q'],
+            'status': status['status'],
+            'display_name': status['display_name']
+        }
+    }
 
     for issuer in issuers:
-        output.append(
+        output['issuers'].append(
             {
                 'current': issuer.to_dict(),
                 'context': ContextService(issuer).context()
