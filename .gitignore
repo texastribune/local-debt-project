@@ -37,7 +37,3 @@ tramp
 # Windows
 Thumbs.db
 Desktop.ini
-
-# App related
-local_debt/static/
-local_debt/templates/
