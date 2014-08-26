@@ -181,6 +181,17 @@ module.exports = function (grunt) {
       ]
     },
 
+    jst: {
+      compile: {
+        files: {
+          '<%= config.app %>/scripts/templates.js': ['<%= config.app %>/scripts/templates/**/*.html']
+        }
+      },
+    options: {
+        prettify: true
+      }
+    },
+
     nunjucks: {
       options: {
         data: grunt.file.readJSON('data.json')
@@ -298,6 +309,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'nunjucks',
     'wiredep',
+    'jst',
     'useminPrepare',
     'sass:dist',
     'copy:styles',
