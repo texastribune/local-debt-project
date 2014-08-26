@@ -34,11 +34,3 @@ class SearchService(object):
             return CityDebt.objects.filter(shape=shape).first()
         elif shape.collection.name == 'School Districts':
             return SchoolDistrictDebt.objects.filter(shape=shape).first()
-
-[
-    {
-        'current': {},
-        'context': []
-    },
-
-]
