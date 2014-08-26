@@ -1,3 +1,5 @@
+$bp-button: new-breakpoint(min-width 934px);
+
 .search {
   @extend %content-block;
   @include features-layout ($bp, 12, 8);
@@ -17,7 +19,7 @@
     font-weight: 800;
     margin: 1em 0;
 
-    @include media($default-768) {
+    @include media($bp-button) {
       display: inline;
       margin: 0 1em;
     }
