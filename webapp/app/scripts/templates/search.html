@@ -1,18 +1,21 @@
- <div class="prose search-box">
-  <hr class="yellow"></hr>
+<div class="search-box">
   <form id="search-form">
-    <label for="address"><h3 class="data-header">Enter a Texas location: </h3></label>
-    <input type="text" id="address">
-    <input type="submit" class="button" id="submit-search" value="Search">
-    <button id="find-me">Find me!</button>
-    <div class="hide error" id="empty-error">
-      <p>Please enter an address.</p>
+    <p class="form-prompt">Enter a Texas address or ZIP code</p>
+    <div class="form-group">
+      <label class="sr-only" for="address">Enter a Texas address or ZIP code</label>
+      <input type="text" id="address" placeholder="78701">
     </div>
-    <div class="hide error" id="not-texas-error">
-      <p>
+    <button id="submit-search" class="search-submit" type="submit">Search</button>
+<!--     <span class="or-separator">- or -</span>
+    <button id="find-me" class="find-me">Find me</button> -->
+    <img src="/img/round-ajax-loader.gif" class="loading hide"/>
+    <div class="messages">
+      <div class="hide error" id="empty-error">
+        Please enter an address.
+      </div>
+      <div class="hide error" id="not-texas-error">
         Sorry, you're not in Texas. Try entering a Texas address.
-      </p>
+      </div>
     </div>
   </form>
- </div>
-
+</div>

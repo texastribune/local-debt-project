@@ -32,6 +32,15 @@ app.Mixins.Helpers = {
           } else {
             return x.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
           }
+        },
+        plural = function(x) {
+          if ( x === 'isd') {
+            return 'school districts';
+          } else if ( x === 'county' ) {
+            return 'counties';
+          } else {
+            return 'cities';
+          }
         };
 
     return {
@@ -41,7 +50,8 @@ app.Mixins.Helpers = {
       'formatMoney': formatMoney,
       'formatPercent': formatPercent,
       'addCommas': addCommas,
-      'toDistrict': toDistrict
+      'toDistrict': toDistrict,
+      'plural': plural
     };
   }
 };
