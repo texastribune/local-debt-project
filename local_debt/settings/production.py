@@ -40,7 +40,12 @@ ALLOWED_HOSTS = ['*']
 #######################
 
 # See: https://docs.djangoproject.com/en/1.6/ref/settings/#caches
-CACHES = {}
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'local_debt_cache',
+    }
+}
 
 
 ############################
