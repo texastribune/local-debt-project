@@ -2,45 +2,31 @@
 
 $bp: new-breakpoint(min-width 866px);
 $bp-table: new-breakpoint(max-width 480px);
+$bp-jump: new-breakpoint(max-width 600px);
 
-$county: #90D3C8;
-$city: #FFA849;
-$isd: #8DC967;
+
+$county: #90d3c8;
+$city: #ffa849;
+$isd: #8dc967;
 $county-bk: transparentize($county, .75);
 $city-bk: transparentize($city, .75);
 $isd-bk: transparentize($isd, .75);
 
-@mixin jumpButton($issuerType) {
+@mixin jump-button($issuer-type) {
+  display: inline-block;
   text-decoration: none;
+
   &:hover {
-    background-color: $issuerType;
+    background-color: $issuer-type;
   }
 
   &:active {
-   background-color: $issuerType;
+    background-color: $issuer-type;
   }
 
-  @include media($bp) {
+  @include media($bp-jump) {
     display: block;
-    margin: .25em 0;
     width: 100%;
-  }
-}
-
-/* OVERRIDES */
-button,
-.button {
-
-  &.county {
-    @include jumpButton($county);
-  }
-
-  &.city {
-    @include jumpButton($city);
-  }
-
-  &.isd {
-    @include jumpButton($isd);
   }
 }
 
@@ -52,7 +38,7 @@ table {
   }
 }
 
-/* base.html */
+// base.html
 .prose {
   @include features-layout ($bp, 12, 8);
 
@@ -81,7 +67,7 @@ table {
 }
 
 
-/* Search Box */
+// Search Box
 .search-box {
   margin-bottom: 1em;
 }
@@ -94,9 +80,28 @@ table {
 .go-to-button {
   display: inline-block;
   margin-right: .25em;
+
+  @include media($bp-jump) {
+    display: block;
+  }
+
+  .button {
+    &.county {
+      @include jump-button($county);
+    }
+
+    &.city {
+      @include jump-button($city);
+    }
+
+    &.isd {
+      @include jump-button($isd);
+    }
+  }
+
 }
 
-/* Entity Layout */
+// Entity Layout
 .debt-box {
   @extend %content-block;
   @include span-columns(12);
@@ -149,6 +154,7 @@ table {
     @include media($bp-table) {
       display: block;
     }
+
     &.important {
       border-bottom: 1px solid $line-gray;
       border-top: 1px solid $line-gray;
@@ -170,25 +176,25 @@ table {
 }
 
 .active {
-  font-weight: 700;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
   background-color: $county-bk;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  font-weight: 700;
 }
 
 .county {
-  border-color: $county;
   background: $county-bk;
+  border-color: $county;
 }
 
 .city {
-  border-color: $city;
   background: $city-bk;
+  border-color: $city;
 }
 
 .isd {
-  border-color: $isd;
   background: $isd-bk;
+  border-color: $isd;
 }
 
 
