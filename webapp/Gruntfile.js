@@ -1,3 +1,5 @@
+// Generated on 2014-08-25 using
+// generator-tt-newsapps 0.0.0
 'use strict';
 
 // # Globbing
@@ -17,7 +19,8 @@ module.exports = function (grunt) {
     // Configurable paths
   var config = {
     app: 'app',
-    dist: 'dist'
+    dist: '../local_debt/templates',
+    staticDist: '../local_debt/static'
   };
 
   grunt.initConfig({
@@ -39,13 +42,28 @@ module.exports = function (grunt) {
     },
 
     clean: {
-      server: '.tmp'
+      options: {
+        force: true
+      },
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= config.dist %>/*',
+            '<%= config.staticDist %>/*',
+            '!<%= config.dist %>/.git*'
+          ]
+        }]
+    },
+      server: '.tmp',
+      djangoStatic: '<%= config.dist %>/static'
     },
 
     connect: {
       options: {
         port: 9000,
-        open: false,
+        open: true,
         livereload: 35729,
         hostname: '0.0.0.0'
       },
@@ -63,6 +81,94 @@ module.exports = function (grunt) {
       }
     },
 
+    copy: {
+      dist: {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.app %>',
+        dest: '<%= config.staticDist %>',
+        src: [
+          '*.{ico,png,txt}',
+          'images/{,*/}*.webp',
+          'styles/fonts/{,*/}*.*'
+        ]
+      },
+      compiledHtml: {
+        expand: true,
+        dot: true,
+        cwd: '.tmp',
+        dest: '<%= config.dist %>',
+        src: [
+          '{,*/}*.html',
+        ]
+      },
+      styles: {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.app %>/styles',
+        dest: '.tmp/styles/',
+        src: '{,*/}*.css'
+      },
+      djangoStatic: {
+        expand: true,
+        dot: true,
+        cwd: '<%= config.dist %>/static',
+        dest:'<%= config.staticDist %>',
+        src: '**/*'
+      }
+    },
+
+    filerev: {
+      images: {
+        src: '<%= config.staticDist %>/images/{,*/}*.*'
+      },
+      scripts: {
+        src: '<%= config.staticDist %>/scripts/{,*/}*.js'
+      },
+      styles: {
+        src: '<%= config.staticDist %>/styles/{,*/}*.css'
+      },
+      fonts: {
+        src: '<%= config.staticDist %>/styles/fonts/{,*/}*.*'
+      },
+      icons: {
+        src: '<%= config.staticDist %>/*.{ico,png}'
+      }
+    },
+
+    htmlmin: {
+      dist: {
+        options: {
+          collapseBooleanAttributes: true,
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          removeAttributeQuotes: true,
+          removeCommentsFromCDATA: true,
+          removeEmptyAttributes: true,
+          removeOptionalTags: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= config.dist %>',
+          src: '{,*/}*.html',
+          dest: '<%= config.dist %>'
+        }]
+      }
+    },
+
+    imagemin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>/images',
+          src: ['{,*/}*.{gif,jpeg,jpg,png}'],
+          dest: '<%= config.staticDist %>/images'
+        }]
+      }
+    },
+
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -73,17 +179,6 @@ module.exports = function (grunt) {
         '<%= config.app %>/scripts/{,*/}*.js',
         '!<%= config.app %>/scripts/vendor/*'
       ]
-    },
-
-    jst: {
-      compile: {
-        files: {
-          'app/scripts/templates.js': ['app/scripts/templates/**/*.html']
-        }
-      },
-      options: {
-        prettify: true
-      }
     },
 
     nunjucks: {
@@ -107,6 +202,15 @@ module.exports = function (grunt) {
           'bower_components'
         ]
       },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>/styles',
+          src: ['*.scss'],
+          dest: '.tmp/styles',
+          ext: '.css'
+        }]
+      },
       server: {
         files: [{
           expand: true,
@@ -118,14 +222,25 @@ module.exports = function (grunt) {
       }
     },
 
-    watch: {
-      jst: {
-        files: ['<%= config.app %>/scripts/templates/{,*/}*.html'],
-        tasks: ['jst'],
-        options: {
-          livereload: true
-        }
+    useminPrepare: {
+      options: {
+        dest: '<%= config.dist %>'
       },
+      html: '.tmp/index.html'
+    },
+
+    usemin: {
+      options: {
+        assetsDirs: [
+        '<%= config.dist %>',
+        '<%= config.staticDist %>/images'
+      ]
+      },
+      html: ['<%= config.dist %>/{,*/}*.html'],
+      css: ['<%= config.staticDist %>/styles/{,*/}*.css']
+    },
+
+    watch: {
       bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
@@ -169,17 +284,35 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jst');
-
   grunt.registerTask('serve', [
     'clean:server',
     'nunjucks',
     'wiredep',
-    'jst',
     'sass:server',
     'autoprefixer',
     'connect:livereload',
     'watch'
+  ]);
+
+  grunt.registerTask('build', [
+    'clean:dist',
+    'nunjucks',
+    'wiredep',
+    'useminPrepare',
+    'sass:dist',
+    'copy:styles',
+    'imagemin',
+    'autoprefixer',
+    'concat',
+    'cssmin',
+    'uglify',
+    'copy:djangoStatic',
+    'clean:djangoStatic',
+    'copy:dist',
+    'copy:compiledHtml',
+    // 'filerev',
+    'usemin',
+    'htmlmin'
   ]);
 
   grunt.registerTask('default', ['serve']);

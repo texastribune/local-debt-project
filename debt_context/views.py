@@ -1,5 +1,7 @@
 import json
+
 from django.http import HttpResponse
+
 from debt_context.services.search_service import SearchService
 from debt_context.services.context_service import ContextService
 
@@ -11,7 +13,7 @@ class JsonpResponse(HttpResponse):
     and the request.
     """
     def __init__(self, content, request, mimetype='application/json',
-        *args, **kwargs):
+                 *args, **kwargs):
         callback = request.GET.get('callback')
         if callback:
             content = '{0}({1})'.format(callback, content)
@@ -24,6 +26,7 @@ def search(request):
     issuers.sort()
 
     output = []
+
     for issuer in issuers:
         output.append(
             {
@@ -33,4 +36,3 @@ def search(request):
         )
 
     return JsonpResponse(json.dumps(output), request=request)
-
