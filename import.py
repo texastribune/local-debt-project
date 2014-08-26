@@ -4,7 +4,7 @@ import os
 import datetime
 import xlrd
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "local_debt.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "local_debt.settings.base")
 from debt_context.models import CityDebt, CountyDebt, SchoolDistrictDebt
 from boundaries.models import Collection, Shape
 
