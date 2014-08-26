@@ -26,7 +26,6 @@ def search(request):
     for issuer in SearchService(query=request.GET['q']).issuers():
         output.append(
             {
-                'issuerType': issuer.issuer_type,
                 'current': issuer.to_dict(),
                 'context': ContextService(issuer).context()
             }
