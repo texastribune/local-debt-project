@@ -56,10 +56,8 @@ form {
 
   input {
     -webkit-appearance: none;
-    border-color: $line-gray;
+    border: 1px solid $line-gray;
     border-radius: 3px;
-    border-style: solid;
-    border-weight: 1px;
     font-size: 1em;
     height: 30px;
     margin: 0;

@@ -37,10 +37,6 @@ button,
 
 table {
   background: $white;
-
-  th {
-    padding: 1em .5em;
-  }
 }
 
 // base.html
@@ -148,14 +144,6 @@ table {
   @include media($bp) {
     @include span-columns(6);
     @include omega();
-  }
-
-  td {
-    padding: .75em;
-
-    @include media($bp-table) {
-      padding: .25em .5em;
-    }
   }
 
   tr {
