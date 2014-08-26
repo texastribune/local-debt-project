@@ -32,6 +32,7 @@ class CityDebt(models.Model):
     data_file = '13citytrlp.xls'
     data_position = range(7, 1240)
     sheet_name = 'Tax-Supported Debt'
+    issuer_type = 'city'
 
     def to_dict(self):
         return {
@@ -80,6 +81,7 @@ class CountyDebt(models.Model):
     data_file = '13cnytrlp.xls'
     data_position = range(7, 268)
     sheet_name = 'Tax-Supported Debt'
+    issuer_type = 'county'
 
     def to_dict(self):
         return {
@@ -136,6 +138,7 @@ class SchoolDistrictDebt(models.Model):
         '13M&O Debt':  range(7, 1028)
         }
     data_file = '13isdvamorvlp.xls'
+    issuer_type = 'isd'
 
     def to_dict(self):
         return  {

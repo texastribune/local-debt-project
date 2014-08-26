@@ -1,4 +1,4 @@
-from debt_context.context_base import ContextBase
+from debt_context.services.context_base import ContextBase
 from debt_context.models import CityDebt
 
 

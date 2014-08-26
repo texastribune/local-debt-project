@@ -19,7 +19,7 @@ class GeoCoder(object):
                     'status': 'ok',
                     'display_name': parsed_response[0]['display_name'],
                     'lat': parsed_response[0]['lat'],
-                    'lng': parsed_response[0]['lat']
+                    'lng': parsed_response[0]['lon']
                 }
 
         except (urllib2.URLError, urllib2.HTTPError, ValueError, KeyError, IndexError), e:
