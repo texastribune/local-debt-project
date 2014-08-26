@@ -23,6 +23,7 @@ class JsonpResponse(HttpResponse):
 
 def search(request):
     issuers = SearchService(query=request.GET['q']).issuers()
+    issuers.sort()
 
     output = []
 

@@ -58,6 +58,14 @@ class CityDebt(models.Model):
             'issuerType': 'city'
         }
 
+    def __cmp__(self, other):
+        if other.issuer_type == 'county':
+            return 1
+        elif other.issuer_type == 'isd':
+            return -1
+        else:
+            return 0
+
 
 class CountyDebt(models.Model):
     created_at = models.DateField()
@@ -106,6 +114,14 @@ class CountyDebt(models.Model):
             'taxYearValuation': n_a_if_none(self.tax_year_valuation),
             'issuerType': 'county'
         }
+
+    def __cmp__(self, other):
+        if other.issuer_type == 'city':
+            return -1
+        elif other.issuer_type == 'isd':
+            return -2
+        else:
+            return 0
 
 
 class SchoolDistrictDebt(models.Model):
@@ -168,3 +184,11 @@ class SchoolDistrictDebt(models.Model):
             'totalDebtPerAV': self.total_debt_per_assessed_valuation,
             'students': self.full_year_ada_2012
         }
+
+    def __cmp__(self, other):
+        if other.issuer_type == 'county':
+            return 2
+        elif other.issuer_type == 'isd':
+            return 1
+        else:
+            return 0
