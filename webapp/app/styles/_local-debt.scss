@@ -19,13 +19,17 @@ $isd-bk: transparentize($isd, .75);
   &:active {
    background-color: $issuerType;
   }
+
+  @include media($bp) {
+    display: block;
+    margin: .25em 0;
+    width: 100%;
+  }
 }
 
 /* OVERRIDES */
 button,
 .button {
-  // height: 36px;
-  // margin: .25em 0;
 
   &.county {
     @include jumpButton($county);

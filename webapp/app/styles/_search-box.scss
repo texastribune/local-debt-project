@@ -1,8 +1,9 @@
+$bp-search: new-breakpoint(min-width 665px);
 $bp-button: new-breakpoint(min-width 934px);
 
 .search {
   @extend %content-block;
-  @include features-layout ($bp, 12, 8);
+  @include features-layout ($bp-search, 12, 8);
 
   .search-box {
     margin-bottom: 1em;
@@ -47,7 +48,7 @@ $bp-button: new-breakpoint(min-width 934px);
 .form-group {
   margin-bottom: 1em;
 
-  @include media($default-768) {
+  @include media($bp-search) {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
@@ -63,7 +64,7 @@ $bp-button: new-breakpoint(min-width 934px);
     padding: 7px 10px;
     width: 100%;
 
-    @include media($default-768) {
+    @include media($bp-search) {
       width: 300px;
     }
   }
