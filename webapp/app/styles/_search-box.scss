@@ -56,10 +56,10 @@ $bp-button: new-breakpoint(min-width 934px);
 
   input {
     -webkit-appearance: none;
-    border-color: $border-gray;
+    border-color: $line-gray;
     border-radius: 3px;
     border-style: solid;
-    border: 1px;
+    border-weight: 1px;
     font-size: 1em;
     height: 30px;
     margin: 0;
