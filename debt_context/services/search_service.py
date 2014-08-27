@@ -14,7 +14,10 @@ class SearchService(object):
         pnt = Point(self.get_lng(), self.get_lat())
         shapes = Shape.objects.filter(shape__contains=pnt).order_by('collection')
 
-        return filter(None, [self.load_issuer(shape) for shape in shapes])
+        if self.status()['status'] == 'ok':
+            return filter(None, [self.load_issuer(shape) for shape in shapes])
+        else:
+            return []
 
     def geo_data(self):
         if 'status' not in self._cache_geo_data:
