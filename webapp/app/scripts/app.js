@@ -9,7 +9,7 @@ app.Routers = app.Routers || {};
 app.Views = app.Views || {};
 
 app.Settings = {
-  'baseURL': '/'
+  'baseURL': ''
 };
 
 app.addRegions({
