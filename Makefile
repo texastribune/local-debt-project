@@ -11,3 +11,7 @@ startapp:
 	cd webapp && npm install; bower install
 	cd webapp && grunt build
 	python manage.py runserver
+
+deploy_prep:
+	cd webapp && grunt build
+	python manage.py collectstatic --noinput
