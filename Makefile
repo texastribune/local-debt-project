@@ -5,7 +5,7 @@ resetdb:
 	python manage.py syncdb --noinput
 	python manage.py migrate
 	python manage.py load_shapefiles
-	python import.py
+	python manage.py import_debt
 
 startapp:
 	cd webapp && npm install; bower install

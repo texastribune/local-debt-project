@@ -3,10 +3,11 @@
 import os
 import datetime
 import xlrd
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "local_debt.settings.base")
+from django.conf import settings
+from django.core.management.base import BaseCommand
 from debt_context.models import CityDebt, CountyDebt, SchoolDistrictDebt
 from boundaries.models import Collection, Shape
+
 
 def zero_on_empty(cad):
     if cad == '':
@@ -97,7 +98,6 @@ def import_city_and_county_debt():
     debt_models = [CityDebt, CountyDebt]
 
     for klass in debt_models:
-        print "Importing %s" % klass.__name__
         xls = xlrd.open_workbook(os.path.join('data', klass.data_file))
         sheet = xls.sheet_by_name(klass.sheet_name)
         created_at = datetime.datetime.strptime('01052014', '%d%m%Y').date()
@@ -125,12 +125,11 @@ def import_city_and_county_debt():
                     shape = shape
                     )
                 debt.save()
-            else:
-                print "%s, %s has not been imported" % (row[1].value, row[2].value)
+            # else:
+            #     print "%s, %s has not been imported" % (row[1].value, row[2].value)
 
 
 def import_school_district_debt():
-    print "Importing 13VotedDebt for School Districts"
     xls = xlrd.open_workbook(os.path.join('data', SchoolDistrictDebt.data_file))
     voted_debt_sheet = xls.sheet_by_name('13VotedDebt')
     mo_debt_sheet = xls.sheet_by_name('13M&O Debt')
@@ -154,8 +153,8 @@ def import_school_district_debt():
                 shape = shape
                 )
             debt.save()
-        else:
-            print "%s, %s has not been imported" % (row[1].value, row[2].value)
+        # else:
+        #     print "%s, %s has not been imported" % (row[1].value, row[2].value)
 
     for index in SchoolDistrictDebt.sheets['13M&O Debt']:
         mo_row = mo_debt_sheet.row(index)
@@ -175,7 +174,12 @@ def import_school_district_debt():
         school_debt.save()
 
 
-if __name__ == "__main__":
-    print "Starting..."
-    import_city_and_county_debt()
-    import_school_district_debt()
+class Command(BaseCommand):
+    help = "Import all data files."
+
+    def handle(self, *args, **options):
+        self.stdout.write("Importing cities and counties...")
+        import_city_and_county_debt()
+        self.stdout.write("Importing school districts...")
+        import_school_district_debt()
+        self.stdout.write("Done!")
