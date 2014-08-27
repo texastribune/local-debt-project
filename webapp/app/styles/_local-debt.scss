@@ -83,6 +83,10 @@ table {
   display: inline-block;
   margin-right: .25em;
   width: 32%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
 
   @include media($bp-jump) {
     display: block;
