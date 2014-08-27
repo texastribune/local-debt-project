@@ -9,7 +9,7 @@ app.Routers = app.Routers || {};
 app.Views = app.Views || {};
 
 app.Settings = {
-  'baseURL': 'http://localhost:8000'
+  'baseURL': '/'
 };
 
 app.addRegions({
