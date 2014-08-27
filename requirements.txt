@@ -5,5 +5,7 @@ Django==1.6.5
 South==1.0
 psycopg2==2.5.3
 dj-database-url==0.3.0
+dj-static==0.0.6
+gunicorn==19.1.1
 
 xlrd==0.9.3
