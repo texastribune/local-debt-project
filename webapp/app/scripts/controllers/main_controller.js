@@ -85,6 +85,8 @@ app.Controllers.Main = Marionette.Controller.extend({
       collection: this.entities
     });
 
-    app.goToRegion.show(this.goToButtons);
+    if (this.entities.length > 0) {
+      app.goToRegion.show(this.goToButtons);
+    }
   }
 });
