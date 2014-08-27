@@ -135,7 +135,7 @@ TEMPLATE_DIRS = (
 #############################
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#static-root
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#static-url
 STATIC_URL = '/static/'
