@@ -29,7 +29,7 @@ class CityDebt(models.Model):
     tax_debt_per_capita            = models.FloatField(null=True)
     shape                          = models.ForeignKey(Shape)
 
-    data_file = '13citytrlp.xls'
+    data_file = '14citytrlp.xls'
     data_position = range(7, 1240)
     sheet_name = 'Tax-Supported Debt'
     issuer_type = 'city'
@@ -87,7 +87,7 @@ class CountyDebt(models.Model):
     tax_debt_per_capita            = models.FloatField(null=True)
     shape                          = models.ForeignKey(Shape)
 
-    data_file = '13cnytrlp.xls'
+    data_file = '14cnytrlp.xls'
     data_position = range(7, 268)
     sheet_name = 'Tax-Supported Debt'
     issuer_type = 'county'
@@ -152,10 +152,10 @@ class SchoolDistrictDebt(models.Model):
     combined_principal_debt           = models.FloatField(null=True)
 
     sheets= {
-        '13VotedDebt': range(7, 1027),
-        '13M&O Debt':  range(7, 1028)
+        '14VotedDebt': range(7, 1027),
+        '14M&O Debt':  range(7, 1028)
         }
-    data_file = '13isdvamorvlp.xls'
+    data_file = '14isdvamorvlp.xls'
     issuer_type = 'isd'
 
     def to_dict(self):

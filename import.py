@@ -130,13 +130,13 @@ def import_city_and_county_debt():
 
 
 def import_school_district_debt():
-    print "Importing 13VotedDebt for School Districts"
+    print "Importing 14VotedDebt for School Districts"
     xls = xlrd.open_workbook(os.path.join('data', SchoolDistrictDebt.data_file))
-    voted_debt_sheet = xls.sheet_by_name('13VotedDebt')
-    mo_debt_sheet = xls.sheet_by_name('13M&O Debt')
+    voted_debt_sheet = xls.sheet_by_name('14VotedDebt')
+    mo_debt_sheet = xls.sheet_by_name('14M&O Debt')
     created_at = datetime.datetime.strptime('01052014', '%d%m%Y').date()
 
-    for index in SchoolDistrictDebt.sheets['13VotedDebt']:
+    for index in SchoolDistrictDebt.sheets['14VotedDebt']:
         voted_row = voted_debt_sheet.row(index)
         shape = find_shape(voted_row)
 
@@ -154,10 +154,8 @@ def import_school_district_debt():
                 shape = shape
                 )
             debt.save()
-        else:
-            print "%s, %s has not been imported" % (row[1].value, row[2].value)
 
-    for index in SchoolDistrictDebt.sheets['13M&O Debt']:
+    for index in SchoolDistrictDebt.sheets['14M&O Debt']:
         mo_row = mo_debt_sheet.row(index)
         try:
             school_debt = SchoolDistrictDebt.objects.get(govt_id=mo_row[0].value)
