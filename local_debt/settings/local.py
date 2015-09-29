@@ -23,9 +23,9 @@ TEMPLATE_DEBUG = DEBUG
 ##########################
 
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-# DATABASES = {
-#     'default': dj_database_url.config(default='postgis://localhost/local_debt')
-# }
+DATABASES = {
+    'default': dj_database_url.config(default='postgis://localhost/local_debt')
+}
 
 
 #######################
@@ -44,6 +44,6 @@ CACHES = {
 # DJANGO DEBUG TOOLBAR CONFIGURATION #
 ######################################
 
-# INSTALLED_APPS += (
-#     'debug_toolbar',
-# )
+INSTALLED_APPS += (
+    'debug_toolbar',
+)

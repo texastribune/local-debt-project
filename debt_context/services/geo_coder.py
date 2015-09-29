@@ -3,6 +3,7 @@ import random
 import urllib
 import urllib2
 
+MAPQUEST_API_KEY = 'Org11HJiMWjYPfE4zxa1ZzoWUMHafU5s'
 
 class GeoCoder(object):
     def __init__(self, query):
@@ -29,6 +30,7 @@ class GeoCoder(object):
     def build_url(self):
         base = "http://open.mapquestapi.com/nominatim/v1/search.php"
         options = {
+            'key': MAPQUEST_API_KEY,
             'format': 'json',
             'countrycodes': 'us',
             'limit': 1,
